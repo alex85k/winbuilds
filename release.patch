@@ -1,0 +1,62 @@
+diff --git a/proj-4.8.0/nad/makefile.vc b/proj-4.8.0/nad/makefile.vc
+index 1166104..1730225 100644
+--- a/proj-4.8.0/nad/makefile.vc
++++ b/proj-4.8.0/nad/makefile.vc
+@@ -30,5 +30,5 @@ install-all:
+ 	-mkdir $(PROJ_LIB_DIR)
+ 	for %f in ( $(OTHER_FILES) ) do copy %f $(PROJ_LIB_DIR)
+ 	if exist conus $(MAKE) /f makefile.vc install-nadgrids
+-	-copy *.gsb $(PROJ_LIB_DIR)
+-	-copy ntv1_can.dat $(PROJ_LIB_DIR)
++#	-copy *.gsb $(PROJ_LIB_DIR)
++#	-copy ntv1_can.dat $(PROJ_LIB_DIR)
+diff --git a/proj-4.8.0/nmake.opt b/proj-4.8.0/nmake.opt
+index 79637ea..f319a6f 100644
+--- a/proj-4.8.0/nmake.opt
++++ b/proj-4.8.0/nmake.opt
+@@ -4,7 +4,7 @@
+ 
+ # Directory tree where PROJ will be installed.
+ !IFNDEF INSTDIR
+-INSTDIR=C:\PROJ
++INSTDIR=C:\\PROJ
+ !ENDIF
+ 
+ # Set the following to the directory where the PROJ distribution data files
+@@ -16,21 +16,15 @@ INSTDIR=C:\PROJ
+ # precedence at runtime over the setting of the PROJ_LIB_DIR macro stored in
+ # the compiled software.
+ !IFNDEF PROJ_LIB_DIR
+-PROJ_LIB_DIR=$(INSTDIR)\SHARE
++PROJ_LIB_DIR=$(INSTDIR)\\share
+ !ENDIF
+ 
+ # Uncomment the first for an optimized build, or the second for debug.
+-!IFNDEF OPTFLAGS
+-!IFNDEF DEBUG
+ OPTFLAGS=	/nologo /Ox /Op /MD
+-!ELSE
+-OPTFLAGS=	/nologo /Zi /MD /Fdproj.pdb
+-!ENDIF
+-!ENDIF
+ 
+ # Uncomment the first for linking exes against DLL or second for static
+-EXE_PROJ =	proj_i.lib
+-#EXE_PROJ =	proj.lib
++#EXE_PROJ =	proj_i.lib
++EXE_PROJ =	proj.lib
+ 
+ # Set the version number for the DLL.  Normally we leave this blank since
+ # we want software that is dynamically loading the DLL to have no problem
+diff --git a/proj-4.8.0/src/makefile.vc b/proj-4.8.0/src/makefile.vc
+index c89ec76..92577bc 100644
+--- a/proj-4.8.0/src/makefile.vc
++++ b/proj-4.8.0/src/makefile.vc
+@@ -130,7 +130,6 @@ install: all
+ 	-mkdir $(INSTDIR)\lib
+ 	-mkdir $(INSTDIR)\include
+ 	copy *.exe $(INSTDIR)\bin
+-	copy *.dll $(INSTDIR)\bin
+ 	copy *.lib $(INSTDIR)\lib
+ 	copy proj_api.h $(INSTDIR)\include
+ 	
