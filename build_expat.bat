@@ -1,7 +1,8 @@
 call settings.bat
 
-git clone https://github.com/coapp-packages/expat.git
+git clone https://github.com/alex85k/expat.git
 cd expat
-cmake -G %CMAKE_TARGET% -DCMAKE_BUILD_TYPE=%VARIANT% -DCMAKE_INSTALL_PREFIX=%PREFIX%
-%MAKE% install
+cmake -G %CMAKE_TARGET% -DCMAKE_BUILD_TYPE=%VARIANT% -DCMAKE_INSTALL_PREFIX=%PREFIX% -DBUILD_shared=OFF
+
+%MAKE% clean install
 cd ..

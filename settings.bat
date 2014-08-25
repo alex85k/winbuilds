@@ -1,9 +1,9 @@
 SET COMPILER=MSVC
 
-SET PREFIX=d:\libs18d
+SET PREFIX=d:\libs18r
 SET BOOST_ROOT=d:\boost
 
-SET VARIANT=Debug
+SET VARIANT=Release
 
 
 if "%COMPILER%"=="MINGW" (

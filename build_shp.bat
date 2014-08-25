@@ -8,9 +8,9 @@ if "%compiler%" == "MINGW" (
 ) else (
    nmake /f makefile.vc
 
-copy /y *.lib %PREFIX%/lib
-copy /y *.h %PREFIX%/include
-copy /y *.exe %PREFIX%/bin
+copy /y *.lib %PREFIX%\lib
+copy /y *.h %PREFIX%\include
+copy /y *.exe %PREFIX%\bin
 
 )
 cd ..

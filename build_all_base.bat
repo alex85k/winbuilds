@@ -24,4 +24,9 @@ if %errorlevel% neq 0 exit /b %errorlevel%
 call build_proj.bat
 if %errorlevel% neq 0 exit /b %errorlevel%
 
-
+call build_expat.bat
+call build_libpng.bat
+call build_lua.bat
+call build_getopt.bat
+call build_sqlite.bat
+call build_shp.bat

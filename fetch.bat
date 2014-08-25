@@ -1,24 +1,25 @@
+set "PATH2=%PATH%"
+set "PATH=%PATH2%;C:\Program Files (x86)\Git\bin"
+set D=%1
 
-set "PATH=%PATH%;C:\Program Files (x86)\Git\bin"
-set D="%1"
 
+if "%3" == "" (
 for /f "delims=" %%a in ('basename %D%') do (
   set FN=%%a
 )
-
+) else (
+  set FN=%3
+)
 
 if NOT EXIST %FN% (
-  curl %D% -o %FN% 
+  echo curl %D% -o "%FN%" 
+  curl %D% -o "%FN%" 
 ) else (
   echo "File already exists, no download is needed"
 )
 
 if NOT EXIST %2 (
-if NOT "%3" == "" (
-  tar xvfz %FN% -C %3
-  7z x %FN -o %3
-) else (
   tar xvfz %FN%
   7z x %FN%
 )
-)
+set "PATH=%PATH2%"
