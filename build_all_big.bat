@@ -1,4 +1,4 @@
-cmd /c build_boost.bat
+rem cmd /c build_boost.bat
 cmd /c build_geos.bat
 cmd /c build_luabind.bat
 cmd /c build_stxxl.bat
