@@ -6,11 +6,14 @@ cd shapelib-1.3.0
 if "%compiler%" == "MINGW" (
    mingw32-make
 ) else (
+   if "%Variant%" == "Debug" (
+     "%SED%" -i makefile.vc -e "s@\/MD @\/MDd @"
+   )
    nmake /f makefile.vc
 
-copy /y *.lib %PREFIX%\lib
-copy /y *.h %PREFIX%\include
-copy /y *.exe %PREFIX%\bin
+   copy /y *.lib %PREFIX%\lib
+   copy /y *.h %PREFIX%\include
+   copy /y *.exe %PREFIX%\bin
 
 )
 cd ..

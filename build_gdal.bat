@@ -9,10 +9,11 @@ set "WIN64OPTS=-e s@#WIN64@WIN64@"
 set GDAL_HOME=%PREFIX%
 set MSVC_VER=1800
 
-"C:\Program Files (x86)\Git\bin\sed" -i nmake.opt -b %WIN64OPTS% -e s@DLLBUILD=1@DLLBUILD=0@ -e "s@\/MD @\/MDd @"
+"%SED%" -i nmake.opt -b %WIN64OPTS% -e s@DLLBUILD=1@DLLBUILD=0@"
 
 if "%Variant%" == "Debug" (
    set "DBG=DEBUG=1"
+   "%SED" -i nmake.opt -e "s@\/MD @\/MDd @"
 ) else (
    set DBG
 )
