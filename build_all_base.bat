@@ -15,18 +15,14 @@ if  "%Variant%" == "Debug"  (
    git apply release.patch
 )
 
-call build_bzip.bat
-if %errorlevel% neq 0 exit /b %errorlevel%
-call build_zlib.bat
-if %errorlevel% neq 0 exit /b %errorlevel%
-call build_libxml.bat
-if %errorlevel% neq 0 exit /b %errorlevel%
-call build_proj.bat
-if %errorlevel% neq 0 exit /b %errorlevel%
+cmd /c build_bzip.bat
+cmd /c build_zlib.bat
+cmd /c build_libxml.bat
+cmd /c build_proj.bat
 
-call build_expat.bat
-call build_libpng.bat
-call build_lua.bat
-call build_getopt.bat
-call build_sqlite.bat
-call build_shp.bat
+cmd /c build_expat.bat
+cmd /c build_libpng.bat
+cmd /c build_lua.bat
+cmd /c build_getopt.bat
+cmd /c build_sqlite.bat
+cmd /c build_shp.bat
