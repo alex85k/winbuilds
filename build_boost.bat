@@ -1,4 +1,6 @@
 call settings.bat 
+
+call fetch.bat "http://downloads.sourceforge.net/project/boost/boost/1.56.0/boost_1_56_0.7z" boost_1_56_0
                  
 set src=%CD%
                 

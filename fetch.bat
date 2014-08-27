@@ -12,8 +12,8 @@ for /f "delims=" %%a in ('basename %D%') do (
 )
 
 if NOT EXIST %FN% (
-  echo curl %D% -o "%FN%" 
-  curl %D% -o "%FN%" 
+  echo curl %D% -o "%FN%"
+  curl -L %D% -o "%FN%"
 ) else (
   echo "File already exists, no download is needed"
 )
