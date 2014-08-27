@@ -14,6 +14,7 @@ if "%compiler%" == "MINGW" (
    copy /y *.lib %PREFIX%\lib
    copy /y *.h %PREFIX%\include
    copy /y *.exe %PREFIX%\bin
+   copy /y *.dll %PREFIX%\bin
 
 )
 cd ..
