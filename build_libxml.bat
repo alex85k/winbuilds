@@ -1,3 +1,5 @@
+call fetch.bat ftp://xmlsoft.org/libxml2/libxml2-2.9.1.tar.gz libxml2-2.9.1
+
 call settings.bat
 
 if "%compiler%" == "MINGW" (
@@ -6,8 +8,10 @@ if "%compiler%" == "MINGW" (
   SET FLAGS="iconv=no" 
 )
 
+
 cd libxml2-2.9.1/win32
 if  "%Variant%" == "Debug"  (
+  "%SED%" -i makefile.Msvc -e "s@/Z7$@/Z7 /MDd@"
    cscript.exe configure.js debug=yes %FLAGS% prefix=%PREFIX%
 ) else (
    cscript.exe configure.js %FLAGS% prefix=%PREFIX%
@@ -17,5 +21,7 @@ if "%compiler%" == "MINGW" (
 ) else (
   nmake install
 )
+xcopy /d /y /e %PREFIX%\include\libxml2\libxml %PREFIX%\include\
+
 cd ..\..
 

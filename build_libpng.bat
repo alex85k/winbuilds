@@ -1,3 +1,5 @@
+call fetch.bat http://prdownloads.sourceforge.net/libpng/lpng1612.zip lpng1612
+
 call settings.bat
 
 cd lpng1612

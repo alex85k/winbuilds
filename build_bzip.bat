@@ -1,9 +1,14 @@
+call fetch.bat http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz bzip2-1.0.6
+
 call settings.bat
 
 cd bzip2-1.0.6
 if "%compiler%" == "MINGW" (
    mingw32-make
 ) else (
+if  "%Variant%" == "Debug"  (
+   "%SED%" -i makefile.msc -e "s@-MD @ -MDd @"
+)
    nmake /f makefile.msc
 )
 
