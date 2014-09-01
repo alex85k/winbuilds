@@ -4,7 +4,6 @@ call settings.bat
 git clone https://github.com/osmcode/libosmium.git libosmium
 
 cd libosmium/build-cmake
-set CMAKE_PREFIX_PATH=C:\PROJ
 set TESTS=ON
 set ALLHPPS=OFF
 cmake .. -G "Visual Studio 12 Win64" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=%PREFIX% -DBOOST_ROOT=%BOOST_ROOT% -DBoost_USE_STATIC_LIBS=ON -DBUILD_TESTING=%TESTS% -DBUILD_TRY_HPPS=%ALLHPPS$ -T CTP_Nov2013

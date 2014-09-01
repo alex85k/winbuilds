@@ -5,7 +5,7 @@ cd osm2pgsql
 git checkout msvc-august2014
 cd build-cmake
 
-set CMAKE_PREFIX_PATH=%PREFIX%;C:\Proj;C:\Program Files\PostgreSQL\9.3
+set CMAKE_PREFIX_PATH=%PREFIX%;C:\Program Files\PostgreSQL\9.3
 
 cmake .. -G "NMake Makefiles" -DBUILD_PBF=ON -DCMAKE_BUILD_TYPE=%Variant%  
 nmake
