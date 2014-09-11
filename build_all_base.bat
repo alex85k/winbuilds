@@ -8,4 +8,5 @@ cmd /c build_libpng.bat
 cmd /c build_lua.bat
 cmd /c build_getopt.bat
 cmd /c build_sqlite.bat
+cmd /c build_sparsehash.bat
 cmd /c build_shp.bat
