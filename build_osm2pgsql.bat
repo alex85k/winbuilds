@@ -2,7 +2,7 @@ call settings.bat
 
 git clone https://github.com/alex85k/osm2pgsql.git
 cd osm2pgsql
-git checkout msvc-august2014
+git checkout msvc-september2014
 cd build-cmake
 
 set CMAKE_PREFIX_PATH=%PREFIX%;C:\Program Files\PostgreSQL\9.3
