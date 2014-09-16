@@ -4,5 +4,8 @@ cmd /c build_sqlite.bat
 cmd /c build_freexl.bat
 cmd /c build_geos.bat
 cmd /c build_spatialite.bat
+cmd /c build_readall.bat
+cmd /c build_spatialite_tools.bat
 cmd /c build_curl.bat
+del /y %prefix%\bin\curl.exe
 cmd /c build_gdal.bat
