@@ -21,6 +21,9 @@ if "%compiler%" == "MINGW" (
 ) else (
   nmake install
 )
+del %PREFIX%\bin\test*.exe
+del %PREFIX%\bin\test*.pdb
+
 mkdir %PREFIX%\include\libxml
 xcopy /d /y /e %PREFIX%\include\libxml2\libxml %PREFIX%\include\libxml
 
