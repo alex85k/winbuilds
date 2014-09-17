@@ -3,7 +3,7 @@ call settings.bat
 call fetch.bat http://download.osgeo.org/proj/proj-4.8.0.zip proj-4.8.0
 
 cd proj-4.8.0
-set INSTDIR=d:\\libs18d
+set INSTDIR=%PREFIX%
 set PROJ_LIB_DIR=%INSTDIR%\\share
 
 
