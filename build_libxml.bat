@@ -1,13 +1,12 @@
-call fetch.bat ftp://xmlsoft.org/libxml2/libxml2-2.9.1.tar.gz libxml2-2.9.1
-
 call settings.bat
+
+call fetch.bat ftp://xmlsoft.org/libxml2/libxml2-2.9.1.tar.gz libxml2-2.9.1
 
 if "%compiler%" == "MINGW" (
   SET FLAGS="compiler=mingw"  
 ) else (
   SET FLAGS="iconv=no" 
 )
-
 
 cd libxml2-2.9.1/win32
 if  "%Variant%" == "Debug"  (

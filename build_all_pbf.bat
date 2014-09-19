@@ -1,3 +1,6 @@
-call build_protobuf.bat
-call build_osmpbf.bat
-call build_protobuf-c.bat
+set "ERRORS="
+   call wlog.bat build_protobuf.bat ^
+&& call wlog.bat build_osmpbf.bat ^
+&& call wlog.bat build_protobuf-c.bat
+
+echo Builds with errors: %ERRORS%

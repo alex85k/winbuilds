@@ -1,15 +1,16 @@
-call fetch.bat http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz bzip2-1.0.6
-
 call settings.bat
 
+call fetch.bat http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz bzip2-1.0.6
 cd bzip2-1.0.6
 if "%compiler%" == "MINGW" (
    mingw32-make
+   %ER%
 ) else (
 if  "%Variant%" == "Debug"  (
    "%SED%" -i makefile.msc -e "s@-MD @ -MDd @"
 )
    nmake /f makefile.msc
+   %ER%
 )
 
 copy /y *.lib %PREFIX%\lib\
@@ -22,5 +23,3 @@ if  "%Variant%" == "Debug"  (
 )
 copy /y bzlib.h %PREFIX%\include
 cd ..
-
-

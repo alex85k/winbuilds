@@ -1,6 +1,12 @@
 call settings.bat
 
 call fetch.bat http://www.gaia-gis.it/gaia-sins/spatialite-tools-4.2.0.tar.gz spatialite-tools-4.2.0
+
+if "%COMPILER%" == "MINGW" (
+   echo "Sorry, MINGW is not supported for now"
+   exit /b 1
+)
+
 cd spatialite-tools-4.2.0
 
 "%SED%" -i nmake.opt -e s@INSTDIR=.*@INSTDIR=\$\(PREFIX\)@"
@@ -19,3 +25,4 @@ rem MAKE THE MOST LIBS STATICALLY LINKED TO AVOID DLL CONFLICTS
 "%SED%" -i makefile.vc -e "s@sqlite3_i.lib@sqlite3.lib@g"
 
 nmake -f makefile.vc install
+%ER%

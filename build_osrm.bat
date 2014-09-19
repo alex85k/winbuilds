@@ -1,4 +1,4 @@
-call settings.bat 
+call settings.bat
 
 set TBB_INSTALL_DIR=d:/tbb
 set TBB_ARCH_PLATFORM=intel64/vc12
@@ -23,7 +23,7 @@ if  "%Variant%" == "Debug"  (
 ) else (
   cmake .. -G "Visual Studio 12 Win64" -DCMAKE_BUILD_TYPE=%VARIANT% -DCMAKE_INSTALL_PREFIX=%PREFIX1% -DBOOST_ROOT=%BOOST_ROOT% -DBoost_USE_STATIC_LIBS=ON -T CTP_Nov2013
   msbuild /clp:Verbosity=normal /nologo OSRM.sln
-  copy /y Debug\*.exe .
+  copy /y Release\*.exe .
 )
 
 cd ..

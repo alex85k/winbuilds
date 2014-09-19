@@ -1,4 +1,5 @@
 call settings.bat
+
 call fetch.bat http://sparsehash.googlecode.com/files/sparsehash-2.0.2.zip sparsehash-2.0.2
 
 cd sparsehash-2.0.2

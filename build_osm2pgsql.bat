@@ -7,8 +7,11 @@ cd build-cmake
 
 set CMAKE_PREFIX_PATH=%PREFIX%;C:\Program Files\PostgreSQL\9.3
 
-cmake .. -G "NMake Makefiles" -DBUILD_PBF=ON -DCMAKE_BUILD_TYPE=%Variant%  
-nmake
+%CMAKE%
+%ER%
+%MAKE% install
+%ER%
+
 cd ../..
 
 mkdir osm2pgsql-bin

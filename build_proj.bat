@@ -16,8 +16,10 @@ if "%Variant%" == "Debug" (
 if "%compiler%" == "MINGW" (
   sh configure --prefix=/d/libs-mgw
   mingw32-make
+  %ER%
 ) else (
   nmake /f makefile.vc install-all
+  %ER%
 )
 
 copy /y src\*.pdb %PREFIX%\bin

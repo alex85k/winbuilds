@@ -16,5 +16,6 @@ if "%Variant%" == "Debug" (
 "%SED%" -i makefile.vc -e s@libexpat.lib@expat.lib@g"
 "%SED%" -i makefile.vc -e s@sqlite3_i.lib@sqlite3.lib@g"
 
-
 nmake -f makefile.vc install
+%ER%
+

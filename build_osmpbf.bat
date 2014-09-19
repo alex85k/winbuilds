@@ -2,7 +2,11 @@ call settings.bat
 
 git clone https://github.com/scrosby/OSM-binary
 cd OSM-binary
-cmake -G %CMAKE_TARGET% -DCMAKE_BUILD_TYPE=%VARIANT% -DCMAKE_INSTALL_PREFIX=%PREFIX%
+
+%CMAKE%
+%ER%
 %MAKE% install
+%ER%
+
 cd ..
 

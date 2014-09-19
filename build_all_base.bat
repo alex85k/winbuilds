@@ -1,12 +1,15 @@
-cmd /c build_bzip.bat
-cmd /c build_zlib.bat
-cmd /c build_libxml.bat
-cmd /c build_proj.bat
+set "ERRORS="
+call wlog.bat build_bzip.bat ^
+&& call wlog.bat build_zlib.bat ^
+&& call wlog.bat build_libxml.bat ^
+&& call wlog.bat build_proj.bat ^
+&& call wlog.bat build_expat.bat  ^
+&& call wlog.bat build_libpng.bat ^
+&& call wlog.bat build_lua.bat ^
+&& call wlog.bat build_getopt.bat ^
+&& call wlog.bat build_sqlite.bat ^
+&& call wlog.bat build_sparsehash.bat ^
+&& call wlog.bat build_shp.bat
 
-cmd /c build_expat.bat
-cmd /c build_libpng.bat
-cmd /c build_lua.bat
-cmd /c build_getopt.bat
-cmd /c build_sqlite.bat
-cmd /c build_sparsehash.bat
-cmd /c build_shp.bat
+echo Builds with errors: %ERRORS%
+

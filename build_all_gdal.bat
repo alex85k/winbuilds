@@ -1,11 +1,15 @@
-cmd /c build_iconv.bat
-cmd /c build_libpng.bat
-cmd /c build_sqlite.bat
-cmd /c build_freexl.bat
-cmd /c build_geos.bat
-cmd /c build_readosm.bat
-cmd /c build_spatialite.bat
-cmd /c build_spatialite_tools.bat
-cmd /c build_curl.bat
-del /y %prefix%\bin\curl.exe
-cmd /c build_gdal.bat
+set "ERRORS="
+   call wlog.bat build_bzip.bat ^
+&& call wlog.bat build_iconv.bat ^
+&& call wlog.bat build_libpng.bat ^
+&& call wlog.bat build_sqlite.bat ^
+&& call wlog.bat build_freexl.bat ^
+&& call wlog.bat build_geos.bat ^
+&& call wlog.bat build_readosm.bat ^
+&& call wlog.bat build_spatialite.bat ^
+&& call wlog.bat build_spatialite_tools.bat ^
+&& call wlog.bat build_curl.bat ^
+&& del /y %prefix%\bin\curl.exe ^
+&& call wlog.bat build_gdal.bat
+
+echo Builds with errors: %ERRORS%
