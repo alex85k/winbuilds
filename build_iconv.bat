@@ -9,7 +9,7 @@ if "%COMPILER%" == "MINGW" (
 )
 
 cd libiconv\COPKG\libiconv
-devenv  libiconv.sln /Upgrade /nologo
+devenv.com  libiconv.sln /Upgrade /nologo
 msbuild /p:Configuration=%Variant% /clp:Verbosity=minimal /nologo libiconv.vcxproj /flp1:logfile=build_errors.txt;errorsonly /flp2:logfile=build_warnings.txt;warningsonly
 
 copy /y x64\%Variant%\*.lib %PREFIX%\lib
