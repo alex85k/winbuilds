@@ -1,7 +1,11 @@
 setlocal
 call settings.bat
 
-git clone https://github.com/coapp-packages/libiconv.git
+if "%COMPILER%"=="MSVC2013" (
+   git clone https://github.com/alex85k/libiconv.git
+) else (
+   git clone https://github.com/coapp-packages/libiconv.git
+)
 
 if "%COMPILER%" == "MINGW" (
    echo "Sorry, MINGW is not supported for now"
@@ -9,7 +13,7 @@ if "%COMPILER%" == "MINGW" (
 )
 
 cd libiconv\COPKG\libiconv
-devenv.com  libiconv.sln /Upgrade /nologo
+
 msbuild /p:Configuration=%Variant% /clp:Verbosity=minimal /nologo libiconv.vcxproj /flp1:logfile=build_errors.txt;errorsonly /flp2:logfile=build_warnings.txt;warningsonly
 
 copy /y x64\%Variant%\*.lib %PREFIX%\lib
