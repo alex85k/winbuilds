@@ -1,3 +1,4 @@
+setlocal
 call settings.bat
 
 call fetch.bat http://download.osgeo.org/shapelib/shapelib-1.3.0.zip shapelib-1.3.0

@@ -1,3 +1,4 @@
+setlocal
 call settings.bat
 
 git clone https://github.com/protobuf-c/protobuf-c.git 

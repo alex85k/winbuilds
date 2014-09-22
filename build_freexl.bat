@@ -1,3 +1,4 @@
+setlocal
 call settings.bat
 
 call fetch.bat http://www.gaia-gis.it/gaia-sins/freexl-1.0.0g.zip freexl-1.0.0g

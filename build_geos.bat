@@ -1,3 +1,4 @@
+setlocal
 call settings.bat
 
 git svn clone -r HEAD http://svn.osgeo.org/geos/trunk geos-svn

@@ -1,3 +1,4 @@
+setlocal
 call settings.bat
 
 call fetch.bat http://prdownloads.sourceforge.net/libpng/lpng1612.zip lpng1612

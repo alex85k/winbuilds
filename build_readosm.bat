@@ -1,3 +1,4 @@
+setlocal
 call settings.bat
 
 call fetch.bat http://www.gaia-gis.it/gaia-sins/readosm-1.0.0b.tar.gz readosm-1.0.0b

@@ -1,3 +1,4 @@
+setlocal
 call settings.bat
 
 call fetch.bat http://www.gaia-gis.it/gaia-sins/libspatialite-sources/libspatialite-4.2.0.tar.gz libspatialite-4.2.0

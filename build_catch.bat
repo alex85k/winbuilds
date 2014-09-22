@@ -1,3 +1,4 @@
+setlocal
 call settings.bat
 
 git clone -b develop https://github.com/philsquared/Catch.git

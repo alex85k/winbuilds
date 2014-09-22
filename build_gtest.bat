@@ -1,3 +1,4 @@
+setlocal
 call settings.bat
 
 call fetch.bat "https://googletest.googlecode.com/files/gtest-1.7.0.zip" gtest-1.7.0 gtest-1.7.0.zip

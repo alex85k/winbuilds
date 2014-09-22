@@ -1,3 +1,4 @@
+setlocal
 call settings.bat
 
 rem git clone https://github.com/mpapierski/cryptopp-cmake.git cryptopp

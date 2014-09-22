@@ -1,3 +1,4 @@
+setlocal
 call settings.bat
 
 call fetch.bat http://www.gaia-gis.it/gaia-sins/spatialite-tools-4.2.0.tar.gz spatialite-tools-4.2.0

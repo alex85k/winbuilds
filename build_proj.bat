@@ -1,3 +1,4 @@
+setlocal
 call settings.bat
 
 call fetch.bat http://download.osgeo.org/proj/proj-4.8.0.zip proj-4.8.0

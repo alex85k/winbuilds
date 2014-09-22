@@ -1,3 +1,4 @@
+setlocal
 call settings.bat
 
 set TBB_INSTALL_DIR=d:/tbb

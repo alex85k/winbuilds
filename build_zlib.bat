@@ -1,3 +1,4 @@
+setlocal
 call settings.bat
 
 call fetch.bat http://zlib.net/zlib-1.2.8.tar.gz zlib-1.2.8
