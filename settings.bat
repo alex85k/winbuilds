@@ -1,9 +1,7 @@
-SET COMPILER=MSVC2013
-
-SET PREFIX=d:\libs18d
-SET BOOST_ROOT=d:\boost
-
-SET VARIANT=Debug
+if "%COMPILER%"=="" SET COMPILER=MSVC2013
+if "%PREFIX%"=="" SET PREFIX=d:\libs18d
+if "%BOOST_ROOT%"=="" SET BOOST_ROOT=d:\boost
+if "%VARIANT%"=="" SET Variant=Debug
 
 set "ER=if ERRORLEVEL 1 exit /b 1"
 if "%COMPILER%"=="MINGW" (
