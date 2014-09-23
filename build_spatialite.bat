@@ -3,14 +3,21 @@ call settings.bat
 
 call fetch.bat http://www.gaia-gis.it/gaia-sins/libspatialite-sources/libspatialite-4.2.0.tar.gz libspatialite-4.2.0
 
-if "%COMPILER%" == "MINGW" (
-   echo "Sorry, MINGW is not supported for now"
-   exit /b 1
-)
-
 cd libspatialite-4.2.0
 
-"%SEDC%" -i nmake.opt -e s@INSTDIR=.*@INSTDIR=\$\(PREFIX\)@"
+if "%COMPILER%" == "MINGW" (
+
+  SET "PATH=%MSYSDIR%;%PREFIX%\bin;%PATH%"
+  set "LIBXML2_CFLAGS=%CFLAGS%"
+  set "LIBXML2_LIBS=%LDFLAGS%"
+  if NOT EXIST Makefile (bash -c "./configure --prefix=%PREFIX:\=/% --disable-examples")
+  %ER%
+  bash -c "make install"
+  %ER%
+
+) else (
+
+"%SEDC%" -i nmake.opt -e "s@INSTDIR=.*@INSTDIR=\$\(PREFIX\)@"
 
 if "%Variant%" == "Debug" (
     "%SEDC%" -i nmake.opt -e "s@\/MD @\/MDd \/Zi @"
@@ -28,3 +35,4 @@ if "%Variant%" == "Debug" (
 
 nmake -f makefile.vc install
 %ER%
+)
