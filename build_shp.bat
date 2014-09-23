@@ -5,11 +5,13 @@ call fetch.bat http://download.osgeo.org/shapelib/shapelib-1.3.0.zip shapelib-1.
 
 cd shapelib-1.3.0
 if "%compiler%" == "MINGW" (
-   mingw32-make
-   %ER%
+  SET "PATH=%PATH%;%MSYSDIR%"
+  SET CC=gcc
+  bash -c "make install PREFIX=%PREFIX:\=/%"
+  %ER%
 ) else (
    if "%Variant%" == "Debug" (
-     "%SED%" -i makefile.vc -e "s@\/MD @\/MDd @"
+     "%SEDC%" -i makefile.vc -e "s@\/MD @\/MDd @"
    )
    nmake /f makefile.vc
    %ER%
