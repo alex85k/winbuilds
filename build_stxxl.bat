@@ -10,7 +10,7 @@ cd build
 
 %CMAKE% ..
 %ER%
-%MAKE% install
+%MAKEC% install
 %ER%
 
 cd ..

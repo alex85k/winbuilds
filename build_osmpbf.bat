@@ -6,7 +6,7 @@ cd OSM-binary
 
 %CMAKE%
 %ER%
-%MAKE% install
+%MAKEC% install
 %ER%
 
 cd ..

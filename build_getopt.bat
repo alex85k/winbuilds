@@ -6,7 +6,7 @@ cd wingetopt
 
 %CMAKE%
 %ER%
-%MAKE% install
+%MAKEC% install
 %ER%
 
 cd ..

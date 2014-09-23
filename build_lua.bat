@@ -6,7 +6,7 @@ cd lua
 
 %CMAKE%
 %ER%
-%MAKE% install
+%MAKEC% install
 %ER%
 
 cd ..

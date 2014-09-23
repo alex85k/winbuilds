@@ -7,7 +7,7 @@ cd protobuf-c/build-cmake
 
 %CMAKE%
 %ER%
-%MAKE% install 
+%MAKEC% install
 %ER%
 
 if "%Variant%" == "Debug" (

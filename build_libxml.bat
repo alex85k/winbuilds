@@ -11,7 +11,7 @@ if "%compiler%" == "MINGW" (
 
 cd libxml2-2.9.1/win32
 if  "%Variant%" == "Debug"  (
-  "%SED%" -i makefile.Msvc -e "s@/Z7$@/Z7 /MDd@"
+  "%SEDC%" -i makefile.Msvc -e "s@/Z7$@/Z7 /MDd@"
    cscript.exe configure.js debug=yes %FLAGS% prefix=%PREFIX%
 ) else (
    cscript.exe configure.js %FLAGS% prefix=%PREFIX%

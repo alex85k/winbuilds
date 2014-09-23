@@ -6,7 +6,7 @@ cd curl
 
 %CMAKE%
 %ER%
-%MAKE% install
+%MAKEC% install
 %ER%
 
 cd ..

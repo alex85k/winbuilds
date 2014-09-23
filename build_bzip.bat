@@ -8,7 +8,7 @@ if "%compiler%" == "MINGW" (
    %ER%
 ) else (
 if  "%Variant%" == "Debug"  (
-   "%SED%" -i makefile.msc -e "s@-MD @ -MDd @"
+   "%SEDC%" -i makefile.msc -e "s@-MD @ -MDd @"
 )
    nmake /f makefile.msc
    %ER%

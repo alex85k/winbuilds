@@ -8,7 +8,7 @@ cd luabind
 
 %CMAKE% -DBUILD_TESTING=NO -DBOOST_ROOT=%BOOST_ROOT% -DBoost_USE_STATIC_LIBS=ON
 %ER%
-%MAKE% install
+%MAKEC% install
 %ER%
 
 cd ..

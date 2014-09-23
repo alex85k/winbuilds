@@ -10,20 +10,20 @@ if "%COMPILER%" == "MINGW" (
    exit /b 1
 )
 
-"%SED%" -i nmake.opt -e s@INSTDIR=.*@INSTDIR=\$\(PREFIX\)@"
+"%SEDC%" -i nmake.opt -e s@INSTDIR=.*@INSTDIR=\$\(PREFIX\)@"
 
 if "%Variant%" == "Debug" (
-   "%SED%" -i nmake.opt -e "s@\/MD @\/MDd \/Zi @"
-   "%SED%" -i nmake.opt -e "s@\/Ox@@"
+   "%SEDC%" -i nmake.opt -e "s@\/MD @\/MDd \/Zi @"
+   "%SEDC%" -i nmake.opt -e "s@\/Ox@@"
 )
 
-"%SED%" -i makefile.vc -e "s@C:\\\\OSGeo4W@$(PREFIX)@g"
-"%SED%" -i makefile.vc -e "s@C:\\\\OSGeo4w@$(PREFIX)@g"
+"%SEDC%" -i makefile.vc -e "s@C:\\\\OSGeo4W@$(PREFIX)@g"
+"%SEDC%" -i makefile.vc -e "s@C:\\\\OSGeo4w@$(PREFIX)@g"
 
-"%SED%" -i config-msvc.h -e "s@HAVE_UNISTD_H@HAVE_NOT_UNISTD_H@g"
+"%SEDC%" -i config-msvc.h -e "s@HAVE_UNISTD_H@HAVE_NOT_UNISTD_H@g"
 
-"%SED%" -i "src/freexl.c" -e "s@round (double@round_old (double@"
-"%SED%" -i "src/freexl.c" -e "s@lround (double@lround_old (double@"
+"%SEDC%" -i "src/freexl.c" -e "s@round (double@round_old (double@"
+"%SEDC%" -i "src/freexl.c" -e "s@lround (double@lround_old (double@"
 
 nmake -f makefile.vc install
 %ER%

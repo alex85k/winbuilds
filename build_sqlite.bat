@@ -6,7 +6,7 @@ cd sqlite
 
 %CMAKE%
 %ER%
-%MAKE% install 
+%MAKEC% install
 %ER%
 
 cd ..

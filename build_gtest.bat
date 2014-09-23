@@ -8,7 +8,7 @@ cd gtest-1.7.0
 
 %CMAKE% -Dgtest_force_shared_crt=ON
 %ER%
-%MAKE%
+%MAKEC%
 %ER%
 
 xcopy /d /y /e include\gtest %PREFIX%\include\gtest\

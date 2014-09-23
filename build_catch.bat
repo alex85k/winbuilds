@@ -6,7 +6,7 @@ cd Catch\Projects\CMake
 
 %CMAKE% 
 %ER%
-%MAKE%
+%MAKEC%
 %ER%
 ctest -VV
 %ER%

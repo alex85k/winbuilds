@@ -10,7 +10,7 @@ if "%compiler%" == "MINGW" (
   %ER%
 ) else (
   if  "%Variant%" == "Debug"  (
-    "%SED%" -i win32/Makefile.msc -e "s@-MD @ -MDd @"
+    "%SEDC%" -i win32/Makefile.msc -e "s@-MD @ -MDd @"
   )
   nmake /f win32/Makefile.msc AS=ml64 
   %ER%
