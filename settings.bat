@@ -8,6 +8,9 @@ if "%COMPILER%"=="MINGW" (
   SET "PATH=%PATH%;c:\mingw64\bin"
   SET "MSYSDIR=c:\msys\bin"
   SET CMAKE_TARGET="MinGW Makefiles"
+  SET "CFLAGS=-I%PREFIX:\=/%/include"
+  SET "LDFLAGS=-L%PREFIX:\=/%/lib"
+  set "CMAKE=cmake -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=%VARIANT% -DCMAKE_INSTALL_PREFIX=%PREFIX%"
   SET "MAKEC=mingw32-make"
   SET "SEDC=sed"
 ) else (

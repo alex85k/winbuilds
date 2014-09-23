@@ -6,6 +6,7 @@ call fetch.bat http://www.gaia-gis.it/gaia-sins/freexl-1.0.0g.zip freexl-1.0.0g
 cd freexl-1.0.0g
 
 if "%COMPILER%" == "MINGW" (
+  SET "PATH=%PATH%;%MSYSDIR%"
   if NOT EXIST Makefile (bash -c "./configure --prefix=%PREFIX:\=/%")
   %ER%
   bash -c "make install"
