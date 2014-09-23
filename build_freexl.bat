@@ -6,11 +6,12 @@ call fetch.bat http://www.gaia-gis.it/gaia-sins/freexl-1.0.0g.zip freexl-1.0.0g
 cd freexl-1.0.0g
 
 if "%COMPILER%" == "MINGW" (
-   echo "Sorry, MINGW is not supported for now"
-   exit /b 1
-)
-
-"%SEDC%" -i nmake.opt -e s@INSTDIR=.*@INSTDIR=\$\(PREFIX\)@"
+  if NOT EXIST Makefile (bash -c "./configure --prefix=%PREFIX:\=/%")
+  %ER%
+  bash -c "make install"
+  %ER%
+) else (
+"%SEDC%" -i nmake.opt -e "s@INSTDIR=.*@INSTDIR=\$\(PREFIX\)@"
 
 if "%Variant%" == "Debug" (
    "%SEDC%" -i nmake.opt -e "s@\/MD @\/MDd \/Zi @"
@@ -27,3 +28,4 @@ if "%Variant%" == "Debug" (
 
 nmake -f makefile.vc install
 %ER%
+)
