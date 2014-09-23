@@ -6,8 +6,19 @@ cd gdal\gdal
 
 git checkout tags/1.11.0
 
-if "%COMPILER:32=%"=="%COMPILER%" (set "WIN64OPTS=-e s@#WIN64@WIN64@")
+if "%COMPILER%" == "MINGW" (
+
 set GDAL_HOME=%PREFIX%
+
+  SET "PATH=%MSYSDIR%;%PREFIX%\bin;%PATH%"
+  bash -c "./configure --host=x86_64-w64-mingw32 --build=x86_64-w64-mingw32  --prefix=%PREFIX:\=/% --without-libtool --without-python --with-spatialite=%PREFIX:\=/% --with-freexl=%PREFIX:\=/%"
+  %ER%
+  bash -c "make install"
+  %ER%
+
+) else (
+
+if "%COMPILER:32=%"=="%COMPILER%" (set "WIN64OPTS=-e s@#WIN64@WIN64@")
 
 "%SEDC%" -i nmake.opt -b %WIN64OPTS% -e s@DLLBUILD=1@DLLBUILD=0@"
 
@@ -43,3 +54,5 @@ if "%Variant%" == "Debug" (
 nmake -f makefile.vc %DBG%
 nmake -f makefile.vc %DBG% devinstall
 cd ..\..
+
+)
