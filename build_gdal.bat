@@ -16,9 +16,8 @@ rem  SET "LDFLAGS=%LDFLAGS%  -lspatialite -lgeos_c -lsqlite3 -liconv"
   SET "PATH=%MSYSDIR%;%PREFIX%\bin;%PATH%"
   SET "PKG_CONFIG_PATH=/d/libsMGW/lib/pkgconfig"
   set "LIBS=-lspatialite -lsqlite3 -lgeos_c -lfreexl -lexpat -lproj -lxml2 -liconv -lz"
-
 rem   copy /y ..\..\cpl_config.h port\cpl_config.h
-rem   bash -c "./configure %CONFARGS% --without-python --with-spatialite=%PREFIX:\=/% --with-expat=%PREFIX:\=/% --with-sqlite3=%PREFIX:\=/% --with-freexl=%PREFIX:\=/%"
+  bash -c "./configure %CONFARGS% --without-python --with-spatialite=%PREFIX:\=/% --with-expat=%PREFIX:\=/% --with-sqlite3=%PREFIX:\=/% --with-freexl=%PREFIX:\=/%"
   %ER%
   bash -c "make install"
   %ER%
