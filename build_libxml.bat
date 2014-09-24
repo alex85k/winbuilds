@@ -16,8 +16,15 @@ if  "%Variant%" == "Debug"  (
 ) else (
    cscript.exe configure.js %FLAGS% prefix=%PREFIX%
 )
+
+
 if "%compiler%" == "MINGW" (
-  mingw32-make install
+  cd ..
+  SET "PATH=%MSYSDIR%;%PATH%"
+  if NOT EXIST Makefile (bash -c "./configure %CONFARGS% --disable-shared")
+  %ER%
+  bash -c "make install -j2"
+  %ER%
 ) else (
   nmake install
 )

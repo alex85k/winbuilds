@@ -6,8 +6,8 @@ call fetch.bat http://download.osgeo.org/proj/proj-4.8.0.zip proj-4.8.0
 cd proj-4.8.0
 
 if "%compiler%" == "MINGW" (
-  SET "PATH=%PATH%;%MSYSDIR%"
-  if NOT EXIST Makefile (bash -c "./configure --prefix=%PREFIX:\=/%")
+  SET "PATH=%MSYSDIR%;%PATH%"
+  if NOT EXIST Makefile (bash -c "./configure %CONFARGS%")
   %ER%
   bash -c "make install"
   %ER%

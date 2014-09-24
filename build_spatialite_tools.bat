@@ -14,8 +14,10 @@ if "%COMPILER%" == "MINGW" (
   set "LIBFREEXL_LIBS=%LDFLAGS%"
   set "LIBREADOSM_CFLAGS=%CFLAGS%"
   set "LIBREADOSM_LIBS=%LDFLAGS%"
-
-  if NOT EXIST Makefile (bash -c "./configure --prefix=%PREFIX:\=/%")
+  set "PKG_CONFIG_PATH=/d/libsMGW/lib/pkgconfig"
+rem   set "LDFLAGS=%LDFLAGS% -lspatialiate -lsqlite3"
+rem  set "CFLAGS=%LDFLAGS% -lspatialiate -lsqlite3"
+  if NOT EXIST Makefile (bash -c "./configure %CONFARGS%")
   %ER%
   bash -c "make install"
   %ER%

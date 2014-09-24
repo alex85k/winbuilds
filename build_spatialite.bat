@@ -6,13 +6,12 @@ call fetch.bat http://www.gaia-gis.it/gaia-sins/libspatialite-sources/libspatial
 cd libspatialite-4.2.0
 
 if "%COMPILER%" == "MINGW" (
-
   SET "PATH=%MSYSDIR%;%PREFIX%\bin;%PATH%"
   set "LIBXML2_CFLAGS=%CFLAGS%"
   set "LIBXML2_LIBS=%LDFLAGS%"
-  if NOT EXIST Makefile (bash -c "./configure --prefix=%PREFIX:\=/% --disable-examples")
+  if NOT EXIST Makefile (bash -c "./configure %CONFARGS% --disable-examples")
   %ER%
-  bash -c "make install"
+  bash -c "make install -j4"
   %ER%
 
 ) else (

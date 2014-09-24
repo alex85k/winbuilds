@@ -9,7 +9,7 @@ if NOT EXIST %PREFIX%\include\expat.h ( echo "Sorry, need expat to build" & exit
 
 if "%Compiler%"=="MINGW" (
   SET "PATH=%PATH%;%MSYSDIR%"
-  if NOT EXIST Makefile (bash -c "./configure --prefix=%PREFIX:\=/%")
+  if NOT EXIST Makefile (bash -c "./configure %CONFARGS%")
   %ER%
   bash -c "make install"
   %ER%

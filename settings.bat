@@ -6,10 +6,12 @@ if "%VARIANT%"=="" SET Variant=Debug
 set "ER=if ERRORLEVEL 1 exit /b 1"
 if "%COMPILER%"=="MINGW" (
   SET "PATH=%PATH%;c:\mingw64\bin"
-  SET "MSYSDIR=c:\msys\bin"
+  SET "MSYSDIR=c:\msys\usr\bin"
   SET CMAKE_TARGET="MinGW Makefiles"
   SET "CFLAGS=-I%PREFIX:\=/%/include"
+  SET "CPPFLAGS=-I%PREFIX:\=/%/include"
   SET "LDFLAGS=-L%PREFIX:\=/%/lib"
+  SET "CONFARGS=--prefix=%PREFIX:\=/% --host=x86_64-w64-mingw32 --build=x86_64-w64-mingw32"
   set "CMAKE=cmake -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=%VARIANT% -DCMAKE_INSTALL_PREFIX=%PREFIX%"
   SET "MAKEC=mingw32-make"
   SET "SEDC=sed"

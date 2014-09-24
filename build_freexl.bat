@@ -7,7 +7,7 @@ cd freexl-1.0.0g
 
 if "%COMPILER%" == "MINGW" (
   SET "PATH=%PATH%;%MSYSDIR%"
-  if NOT EXIST Makefile (bash -c "./configure --prefix=%PREFIX:\=/%")
+  if NOT EXIST Makefile (bash -c "./configure %CONFARGS%")
   %ER%
   bash -c "make install"
   %ER%
