@@ -4,6 +4,7 @@ call settings.bat
 call fetch.bat http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz bzip2-1.0.6
 cd bzip2-1.0.6
 if "%compiler%" == "MINGW" (
+   SET "PATH=%MSYSDIR%;%PATH%"
    mingw32-make
    %ER%
 ) else (

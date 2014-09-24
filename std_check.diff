@@ -1,0 +1,29 @@
+Index: CMakeLists.txt
+===================================================================
+--- CMakeLists.txt	(revision 4018)
++++ CMakeLists.txt	(working copy)
+@@ -183,7 +183,11 @@
+ include(CheckPrototypeExists)
+ include(CheckSymbolExists)
+ 
+-check_prototype_exists(isnan cmath HAVE_STD_ISNAN)
++check_cxx_source_compiles(
++  "#include <cmath>
++  int main() { double x=0.1; return std::isnan(x)?1:0; }"
++  HAVE_STD_ISNAN)
++
+ if(NOT HAVE_STD_ISNAN)
+   if(MSVC)
+     check_prototype_exists(_isnan float.h HAVE_ISNAN)
+@@ -197,7 +201,10 @@
+   endif()
+ endif()
+ 
+-check_prototype_exists(isfinite cmath HAVE_STD_ISFINITE)
++check_cxx_source_compiles(
++  "#include <cmath>
++  int main() { double x=0.1; return std::isfinite(x)?1:0; }"
++  HAVE_STD_ISFINITE)
+ 
+ if(NOT HAVE_STD_ISFINITE)
+   if(MSVC)

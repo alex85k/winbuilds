@@ -8,15 +8,7 @@ cd spatialite-tools-4.2.0
 if "%COMPILER%" == "MINGW" (
 
   SET "PATH=%MSYSDIR%;%PREFIX%\bin;%PATH%"
-  set "LIBSPATIALITE_CFLAGS=%CFLAGS%"
-  set "LIBSPATIALITE_LIBS=%LDFLAGS%"
-  set "LIBFREEXL_CFLAGS=%CFLAGS%"
-  set "LIBFREEXL_LIBS=%LDFLAGS%"
-  set "LIBREADOSM_CFLAGS=%CFLAGS%"
-  set "LIBREADOSM_LIBS=%LDFLAGS%"
-  set "PKG_CONFIG_PATH=/d/libsMGW/lib/pkgconfig"
-rem   set "LDFLAGS=%LDFLAGS% -lspatialiate -lsqlite3"
-rem  set "CFLAGS=%LDFLAGS% -lspatialiate -lsqlite3"
+  set "PKG_CONFIG_PATH=/d/libsmgw/lib/pkgconfig"
   if NOT EXIST Makefile (bash -c "./configure %CONFARGS%")
   %ER%
   bash -c "make install"

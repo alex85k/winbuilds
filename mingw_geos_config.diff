@@ -1,0 +1,13 @@
+Index: tools/CMakeLists.txt
+===================================================================
+--- tools/CMakeLists.txt	(revision 4018)
++++ tools/CMakeLists.txt	(working copy)
+@@ -11,7 +11,7 @@
+ #
+ #################################################################################
+ 
+-if(UNIX)
++if(UNIX OR MINGW)
+ 
+   if(APPLE AND GEOS_ENABLE_MACOSX_FRAMEWORK AND GEOS_ENABLE_MACOSX_FRAMEWORK_UNIXCOMPAT)
+     set(installdest GEOS.framework/Versions/${VERSION_MAJOR}/unix/bin)

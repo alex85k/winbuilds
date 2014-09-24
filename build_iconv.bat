@@ -8,8 +8,8 @@ if "%COMPILER%"=="MSVC2013" (
 )
 
 if "%COMPILER%" == "MINGW" (
-   echo "Sorry, MINGW is not supported for now"
-   exit /b 1
+   echo "Iconv should be already bundled with MINGW"
+   exit /b 0
 )
 
 cd libiconv\COPKG\libiconv

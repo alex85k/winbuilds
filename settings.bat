@@ -6,7 +6,7 @@ if "%VARIANT%"=="" SET Variant=Debug
 set "ER=if ERRORLEVEL 1 exit /b 1"
 if "%COMPILER%"=="MINGW" (
   SET "PATH=%PATH%;c:\mingw64\bin"
-  SET "MSYSDIR=c:\msys\usr\bin"
+  SET "MSYSDIR=c:\msys64\usr\bin"
   SET CMAKE_TARGET="MinGW Makefiles"
   SET "CFLAGS=-I%PREFIX:\=/%/include"
   SET "CPPFLAGS=-I%PREFIX:\=/%/include"
