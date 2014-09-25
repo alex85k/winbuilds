@@ -11,7 +11,9 @@ if "%COMPILER%" == "MINGW" (
   set "LIBXML2_LIBS=%LDFLAGS%"
   if NOT EXIST Makefile (bash -c "./configure %CONFARGS% --disable-examples")
   %ER%
-  bash -c "make install -j4"
+rem  bash -c "make install -j4"
+  sed -i %PREFIX:\=/%/lib/libspatialite.la -e "s@-ldl@@g"
+  sed -i %PREFIX:\=/%/lib/libspatialite.la -e "s@-lsqlite3@-lxml2 -lsqlite3 -lgeos_c -lz@g"
   %ER%
 
 ) else (

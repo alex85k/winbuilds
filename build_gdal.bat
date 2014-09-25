@@ -5,7 +5,7 @@ git clone https://github.com/OSGeo/gdal.git
 cd gdal\gdal
 
 git checkout tags/1.11.0
-rem git clean -f -x
+if "%1"=="clean" (git clean -f -x)
 
 if "%COMPILER%" == "MINGW" (
 
@@ -16,9 +16,11 @@ rem  SET "LDFLAGS=%LDFLAGS%  -lspatialite -lgeos_c -lsqlite3 -liconv"
   SET "PATH=%MSYSDIR%;%PREFIX%\bin;%PATH%"
   SET "PKG_CONFIG_PATH=/d/libsMGW/lib/pkgconfig"
   set "LIBS=-lspatialite -lsqlite3 -lgeos_c -lfreexl -lexpat -lproj -lxml2 -liconv -lz"
-rem   copy /y ..\..\cpl_config.h port\cpl_config.h
-  if NOT EXIST GDALmake.opt (bash -c "./configure %CONFARGS% --without-python --with-spatialite=%PREFIX:\=/% --with-expat=%PREFIX:\=/% --with-sqlite3=%PREFIX:\=/% --with-freexl=%PREFIX:\=/%" )
+rem copy /y ..\..\cpl_config.h port\cpl_config.h
+  if NOT EXIST GDALmake.opt (bash -c "./configure %CONFARGS% --without-libtool --disable-static --enable-shared --without-python --with-spatialite=%PREFIX:\=/% --with-expat=%PREFIX:\=/% --with-sqlite3=%PREFIX:\=/% --with-freexl=%PREFIX:\=/%" )
   %ER%
+  bash -c "which sed"
+  bash -c "sed -i GNUmakefile -e 's@\$(GDAL_ROOT)\/@@g'"
   bash -c "make install"
   %ER%
 ) else (
