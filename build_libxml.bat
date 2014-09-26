@@ -9,23 +9,22 @@ if "%compiler%" == "MINGW" (
   SET FLAGS="iconv=no" 
 )
 
-cd libxml2-2.9.1/win32
-if  "%Variant%" == "Debug"  (
-  "%SEDC%" -i makefile.Msvc -e "s@/Z7$@/Z7 /MDd@"
-   cscript.exe configure.js debug=yes %FLAGS% prefix=%PREFIX%
-) else (
-   cscript.exe configure.js %FLAGS% prefix=%PREFIX%
-)
-
-
+cd libxml2-2.9.1
 if "%compiler%" == "MINGW" (
-  cd ..
   SET "PATH=%MSYSDIR%;%PATH%"
-  if NOT EXIST Makefile (bash -c "./configure %CONFARGS% --disable-shared")
+  if NOT EXIST Makefile (bash -c "./configure %CONFARGS% --without-python")
   %ER%
   bash -c "make install -j2"
   %ER%
 ) else (
+  cd win32
+  if  "%Variant%" == "Debug"  (
+    "%SEDC%" -i makefile.Msvc -e "s@/Z7$@/Z7 /MDd@"
+     cscript.exe configure.js debug=yes %FLAGS% prefix=%PREFIX%
+  ) else (
+     cscript.exe configure.js %FLAGS% prefix=%PREFIX%
+)
+
   nmake install
 )
 del %PREFIX%\bin\test*.exe

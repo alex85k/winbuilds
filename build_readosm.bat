@@ -8,7 +8,7 @@ cd readosm-1.0.0b
 if NOT EXIST %PREFIX%\include\expat.h ( echo "Sorry, need expat to build" & exit /b 1 )
 
 if "%Compiler%"=="MINGW" (
-  SET "PATH=%PATH%;%MSYSDIR%"
+  SET "PATH=%MSYSDIR%;%PATH%"
   if NOT EXIST Makefile (bash -c "./configure %CONFARGS%")
   %ER%
   bash -c "make install"
