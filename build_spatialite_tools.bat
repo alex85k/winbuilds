@@ -5,15 +5,15 @@ call fetch.bat http://www.gaia-gis.it/gaia-sins/spatialite-tools-4.2.0.tar.gz sp
 
 cd spatialite-tools-4.2.0
 
-if "%COMPILER%" == "MINGW" (
+SET "PREFIX1=%PREFIX:\=/%"
 
+if "%COMPILER%" == "MINGW" (
   SET "PATH=%MSYSDIR%;%PREFIX%\bin;%PATH%"
-  set "PKG_CONFIG_PATH=/d/libsmgw/lib/pkgconfig"
+  SET PKG_CONFIG_PATH=/%PREFIX1::=%/lib/pkgconfig
   if NOT EXIST Makefile (bash -c "./configure %CONFARGS%")
   %ER%
   bash -c "make install"
   %ER%
-
 ) else (
 
 "%SEDC%" -i nmake.opt -e "s@INSTDIR=.*@INSTDIR=\$\(PREFIX\)@"
