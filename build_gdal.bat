@@ -1,25 +1,24 @@
 setlocal
 call settings.bat
 
-git clone https://github.com/OSGeo/gdal.git
+rem git clone https://github.com/OSGeo/gdal.git
 cd gdal\gdal
 
-git checkout tags/1.11.0
+rem git checkout tags/1.11.0
 if "%1"=="clean" (git clean -f -x)
 
-if "%COMPILER%" == "MINGW" (
+SET "PREFIX1=%PREFIX:\=/%"
 
+if "%COMPILER%" == "MINGW" (
 set GDAL_HOME=%PREFIX%
-rem  SET "PATH=%MSYSDIR%;C:\mingw64\bin;C:\Windows\System32\bin"
-rem --host=x86_64-w64-mingw32 --build=x86_64-w64-mingw32 --host=mingw32  --without-libtool %PREFIX%\bin;
-rem  SET "LDFLAGS=%LDFLAGS%  -lspatialite -lgeos_c -lsqlite3 -liconv"
+  SET PKG_CONFIG_PATH=/%PREFIX1::=%/lib/pkgconfig
   SET "PATH=%MSYSDIR%;%PREFIX%\bin;%PATH%"
-  SET "PKG_CONFIG_PATH=/d/libsMGW/lib/pkgconfig"
-  set "LIBS=-lspatialite -lsqlite3 -lgeos_c -lfreexl -lexpat -lproj -lxml2 -liconv -lz"
-rem copy /y ..\..\cpl_config.h port\cpl_config.h
-  if NOT EXIST GDALmake.opt (bash -c "./configure %CONFARGS% --without-libtool --disable-static --enable-shared --without-python --with-spatialite=%PREFIX:\=/% --with-expat=%PREFIX:\=/% --with-sqlite3=%PREFIX:\=/% --with-freexl=%PREFIX:\=/%" )
+rem set "LIBS=-lspatialite -lsqlite3 -lgeos_c -lfreexl -lexpat -lproj -lxml2 -liconv -lz"
+  if NOT EXIST GDALmake.opt (bash -c "./configure %CONFARGS% --without-libtool --disable-static --enable-shared --without-python --with-spatialite=%PREFIX:\=/% --with-expat=%PREFIX:\=/% --with-sqlite3=%PREFIX:\=/% --with-freexl=%PREFIX:\=/" )
   %ER%
-  bash -c "which sed"
+rem Build EXEs against DLL, not static .a
+  bash -c "sed -i GDALmake.opt -e 's@endif # HAVE_LIBTOOL@endif # HAVE_LIBTOOL\nEXE_DEP_LIBS=$(GDAL_SLIB)@g'"
+rem Omit GDAL_ROOT to shorten command line
   bash -c "sed -i GNUmakefile -e 's@\$(GDAL_ROOT)\/@@g'"
   bash -c "make install"
   %ER%

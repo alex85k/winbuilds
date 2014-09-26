@@ -5,15 +5,17 @@ call fetch.bat http://www.gaia-gis.it/gaia-sins/libspatialite-sources/libspatial
 
 cd libspatialite-4.2.0
 
+SET "PREFIX1=%PREFIX:\=/%"
+
 if "%COMPILER%" == "MINGW" (
+  SET PKG_CONFIG_PATH=/%PREFIX1::=%/lib/pkgconfig
   SET "PATH=%MSYSDIR%;%PREFIX%\bin;%PATH%"
-  set "LIBXML2_CFLAGS=%CFLAGS%"
-  set "LIBXML2_LIBS=%LDFLAGS%"
-  if NOT EXIST Makefile (bash -c "./configure %CONFARGS% --disable-examples")
+rem   set "LIBXML2_CFLAGS=%CFLAGS%"
+rem   set "LIBXML2_LIBS=%LDFLAGS%"
+  if NOT EXIST Makefile (bash -c "./configure %CONFARGS%  --target=mingw32 --disable-examples")
   %ER%
-rem  bash -c "make install -j4"
+  bash -c "make install"
   sed -i %PREFIX:\=/%/lib/libspatialite.la -e "s@-ldl@@g"
-  sed -i %PREFIX:\=/%/lib/libspatialite.la -e "s@-lsqlite3@-lxml2 -lsqlite3 -lgeos_c -lz@g"
   %ER%
 
 ) else (
