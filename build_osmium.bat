@@ -9,6 +9,7 @@ set ALLHPPS=OFF
 
 if "%COMPILER%" == "MINGW" (
    %CMAKE% .. -DBOOST_ROOT=%BOOST_ROOT% -DBoost_USE_STATIC_LIBS=ON -DBUILD_TESTING=%TESTS% -DBUILD_TRY_HPPS=%ALLHPPS%
+   %ER%
    mingw32-make
    %ER%
 ) else (
