@@ -7,6 +7,7 @@ git clone https://github.com/alex85k/cryptopp-cmake.git cryptopp
 cd cryptopp
 %CMAKE%
 %ER%
+del GNUMakefile
 %MAKEC% install
 %ER%
 
