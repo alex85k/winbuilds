@@ -22,6 +22,7 @@ rem Omit GDAL_ROOT to shorten command line
   bash -c "sed -i GNUmakefile -e 's@\$(GDAL_ROOT)\/@@g'"
   bash -c "make install"
   %ER%
+  copy /y %PREFIX%\lib\libgdal.dll %PREFIX%\bin
 ) else (
 
 if "%COMPILER:32=%"=="%COMPILER%" (set "WIN64OPTS=-e s@#WIN64@WIN64@")

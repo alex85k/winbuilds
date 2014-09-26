@@ -13,6 +13,7 @@ if "%COMPILER%" == "MINGW" (
   bash -c "make -f win32/Makefile.gcc install"
   bash -c "make -f win32/Makefile.gcc install SHARED_MODE=1"
   %ER%
+  copy /y %PREFIX%\zlib1.dll %PREFIX%\bin
 ) else (
   if  "%Variant%" == "Debug"  (
     "%SEDC%" -i win32/Makefile.msc -e "s@-MD @ -MDd @"
