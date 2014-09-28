@@ -44,6 +44,7 @@ if "%COMPILER%"=="MINGW" (
 if NOT EXIST %PREFIX% mkdir %PREFIX%
 if NOT EXIST %PREFIX%\include mkdir %PREFIX%\include
 if NOT EXIST %PREFIX%\lib mkdir %PREFIX%\lib
+if NOT EXIST %PREFIX%\bin mkdir %PREFIX%\bin
 
 echo ============= %COMPILER% -- %VARIANT% --- %PREFIX% --- %CMAKE_TARGET% ==============
 

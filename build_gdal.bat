@@ -1,10 +1,9 @@
 setlocal
 call settings.bat
 
-rem git clone https://github.com/OSGeo/gdal.git
+git clone -b tags/1.11.0 https://github.com/OSGeo/gdal.git
 cd gdal\gdal
 
-rem git checkout tags/1.11.0
 if "%1"=="clean" (git clean -f -x)
 
 SET "PREFIX1=%PREFIX:\=/%"

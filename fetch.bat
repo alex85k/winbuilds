@@ -19,10 +19,9 @@ if NOT EXIST %FN% (
 )
 
 if NOT EXIST %2 (
- if x%FN:.gz=%==x%FN% (
+ if x%FN:gz=%==x%FN% (
   7z x %FN%
  ) else (
-   
   tar xvfz %FN%
  )
 )
