@@ -11,4 +11,6 @@ del GNUMakefile
 %MAKEC% install
 %ER%
 
+xcopy /d /y /e %PREFIX%\include\cryptopp %PREFIX%\include\crypto++\
+
 cd ..
