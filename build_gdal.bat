@@ -1,7 +1,7 @@
 setlocal
 call settings.bat
 
-git clone -b tags/1.11.0 https://github.com/OSGeo/gdal.git
+git clone -b tags/1.11.1 https://github.com/OSGeo/gdal.git
 cd gdal\gdal
 
 if "%1"=="clean" (git clean -f -x)
