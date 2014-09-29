@@ -7,9 +7,9 @@ cd gdal\gdal
 if "%1"=="clean" (git clean -f -x)
 
 SET "PREFIX1=%PREFIX:\=/%"
+set GDAL_HOME=%PREFIX%
 
 if "%COMPILER%" == "MINGW" (
-set GDAL_HOME=%PREFIX%
   SET PKG_CONFIG_PATH=/%PREFIX1::=%/lib/pkgconfig
   SET "PATH=%MSYSDIR%;%PREFIX%\bin;%PATH%"
 rem set "LIBS=-lspatialite -lsqlite3 -lgeos_c -lfreexl -lexpat -lproj -lxml2 -liconv -lz"
@@ -24,9 +24,11 @@ rem Omit GDAL_ROOT to shorten command line
   copy /y %PREFIX%\lib\libgdal.dll %PREFIX%\bin
 ) else (
 
-if "%COMPILER:32=%"=="%COMPILER%" (set "WIN64OPTS=-e s@#WIN64@WIN64@")
+if "%COMPILER:32=%"=="%COMPILER%" (
+  "%SEDC%" -i nmake.opt -e "s@#WIN64@WIN64@"
+)
 
-"%SEDC%" -i nmake.opt -b %WIN64OPTS% -e s@DLLBUILD=1@DLLBUILD=0@"
+rem "%SEDC%" -i nmake.opt -e "s@DLLBUILD=1@DLLBUILD=0@"
 
 "%SEDC%" -i nmake.opt -e "s@#SQLITE_INC=.*@SQLITE_INC=-I$(PREFIX)\\\\include -DHAVE_SPATIALITE@"
 "%SEDC%" -i nmake.opt -e "s@#SQLITE_LIB=.*@SQLITE_LIB=$(PREFIX)\\\\lib\\\\spatialite.lib $(PREFIX)\\\\lib\\\\geos_c.lib $(PREFIX)\\\\lib\\\\sqlite3.lib@"
@@ -58,7 +60,11 @@ if "%Variant%" == "Debug" (
 )
 
 nmake -f makefile.vc %DBG%
+%ER%
 nmake -f makefile.vc %DBG% devinstall
+%ER%
+ECHO -------------  Installed to %PREFIX%  --------------
+
 cd ..\..
 
 )
