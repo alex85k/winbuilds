@@ -9,7 +9,7 @@ cd build-cmake
 set CMAKE_PREFIX_PATH=%PREFIX%;C:\Program Files\PostgreSQL\9.3
 
 copy CMakeLists.txt ..
-%CMAKE% ..  -DBOOST_ROOT=%BOOST_ROOT% -DBoost_USE_STATIC_LIBS=ON
+%CMAKE% ..  -DBOOST_ROOT=%BOOST_ROOT% -DBoost_USE_STATIC_LIBS=ON -DBUILD_PBF=ON
 %ER%
 %MAKEC% install
 %ER%

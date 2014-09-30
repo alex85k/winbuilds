@@ -8,7 +8,7 @@ cd build-cmake
 
 set CMAKE_PREFIX_PATH=%PREFIX%;C:\Program Files\PostgreSQL\9.3
 
-%CMAKE%
+%CMAKE% -DBUILD_PBF=ON
 %ER%
 %MAKEC% install
 %ER%
