@@ -45,8 +45,7 @@ if "%compiler%" == "MINGW" (
   copy /y "C:\Program Files\PostgreSQL\9.3\bin\ssleay32.dll" osm2pgsql-cpp-bin
 )
 
-
 cd osm2pgsql-cpp/build-cmake
-  set PATH=%CD%/../../osm2pgsql-bin;%PATH%
+  set PATH=%CD%\..\..\osm2pgsql-cpp-bin;%PATH%
   ctest -VV
 cd ../..
