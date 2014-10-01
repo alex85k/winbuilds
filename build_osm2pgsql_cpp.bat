@@ -46,6 +46,7 @@ if "%compiler%" == "MINGW" (
 )
 
 cd osm2pgsql-cpp/build-cmake
+  set SRCDIR=%CD%\..
   set PATH=%CD%\..\..\osm2pgsql-cpp-bin;%PATH%
   ctest -VV
 cd ../..
