@@ -1,12 +1,17 @@
 setlocal
+
+
 call settings.bat
 
-git clone https://github.com/alex85k/osm2pgsql.git osm2pgsql-cpp
-cd osm2pgsql-cpp
-git checkout msvc-october1-cpp
-cd build-cmake
 
-copy CMakeLists.txt ..
+set "PSQL_ROOT=C:\Program Files\PostgreSQL\9.3"
+set PGUSER=postgres
+set PGPASSWORD=
+set OSM2PGSQL=osm2pgsql-cmake
+
+git clone https://github.com/alex85k/osm2pgsql-cmake.git %OSM2PGSQL%
+cd %OSM2PGSQL%
+
 
 if "%compiler%" == "MINGW" (
    SET "PATH=%MSYSDIR%;%PREFIX%\bin;%PATH%"
@@ -14,20 +19,19 @@ if "%compiler%" == "MINGW" (
    set CMAKE_PREFIX_PATH=%PREFIX%;C:\Program Files\PostgreSQL\9.3
 )
 
-%CMAKE% ..  -DBOOST_ROOT=%BOOST_ROOT% -DBoost_USE_STATIC_LIBS=ON -DBUILD_PBF=ON -DBUILD_TESTS=ON
+%CMAKE% -DBOOST_ROOT=%BOOST_ROOT% -DBoost_USE_STATIC_LIBS=ON -DBUILD_PBF=ON -DBUILD_TESTS=ON
 %ER%
 %MAKEC% install
 %ER%
 
-cd ../..
+cd ..
 
 mkdir osm2pgsql-cpp-bin
-copy /y osm2pgsql-cpp\build-cmake\*.exe osm2pgsql-cpp-bin
-copy /y osm2pgsql-cpp\default.style osm2pgsql-cpp-bin
-copy /y osm2pgsql-cpp\style.lua osm2pgsql-cpp-bin
-copy /y %PREFIX%\bin\libxml2.dll osm2pgsql-cpp-bin
 
 if "%compiler%" == "MINGW" (
+  copy /y %OSM2PGSQL%\*.exe osm2pgsql-cpp-bin
+  copy /y %OSM2PGSQL%\osm2pgsql-cpp\default.style osm2pgsql-cpp-bin
+  copy /y %OSM2PGSQL%\osm2pgsql-cpp\style.lua osm2pgsql-cpp-bin
   copy /y "%PREFIX%\lib\libpq.dll" osm2pgsql-cpp-bin
   copy /y "c:\mingw64\bin\libgcc*.dll" osm2pgsql-cpp-bin
   copy /y "c:\mingw64\bin\libstd*.dll" osm2pgsql-cpp-bin
@@ -37,16 +41,23 @@ if "%compiler%" == "MINGW" (
   copy /y %PREFIX%\bin\libproj*.dll osm2pgsql-cpp-bin
   copy /y %PREFIX%\bin\zlib1.dll osm2pgsql-cpp-bin
 ) else (
+  copy /y %OSM2PGSQL%\*.exe osm2pgsql-cpp-bin
+  copy /y %OSM2PGSQL%\osm2pgsql-cpp\default.style osm2pgsql-cpp-bin
+  copy /y %OSM2PGSQL%\osm2pgsql-cpp\style.lua osm2pgsql-cpp-bin
+  copy /y %PREFIX%\bin\libxml2.dll osm2pgsql-cpp-bin
   copy /y %PREFIX%\bin\lua.dll osm2pgsql-cpp-bin
   copy /y %PREFIX%\bin\geos.dll osm2pgsql-cpp-bin
-  copy /y "C:\Program Files\PostgreSQL\9.3\bin\libpq.dll" osm2pgsql-cpp-bin
-  copy /y "C:\Program Files\PostgreSQL\9.3\bin\libintl-8.dll" osm2pgsql-cpp-bin
-  copy /y "C:\Program Files\PostgreSQL\9.3\bin\libeay32.dll" osm2pgsql-cpp-bin
-  copy /y "C:\Program Files\PostgreSQL\9.3\bin\ssleay32.dll" osm2pgsql-cpp-bin
+  copy /y "%PSQL_ROOT%\bin\libpq.dll" osm2pgsql-cpp-bin
+  copy /y "%PSQL_ROOT%\bin\libintl-8.dll" osm2pgsql-cpp-bin
+  copy /y "%PSQL_ROOT%\bin\libeay32.dll" osm2pgsql-cpp-bin
+  copy /y "%PSQL_ROOT%\bin\ssleay32.dll" osm2pgsql-cpp-bin
 )
 
-cd osm2pgsql-cpp/build-cmake
-  set SRCDIR=%CD%\..
-  set PATH=%CD%\..\..\osm2pgsql-cpp-bin;%PATH%
-  ctest -VV
-cd ../..
+set "PATH=%CD%\osm2pgsql-cpp-bin;C:\Python27;%PATH%"
+cd %OSM2PGSQL%
+echo "Running tests - see build_osm2pgsql_cpp_testing.log..."
+rem %CD%;%PREFIX%\bin;C:\Program Files\PostgreSQL\9.3;%PATH%
+ctest -VV >..\build_osm2pgsql_cpp_testing.log 2>&1
+%ER%
+echo "Tests passed"
+cd ..
