@@ -1,8 +1,5 @@
 setlocal
-
-
 call settings.bat
-
 
 set "PSQL_ROOT=C:\Program Files\PostgreSQL\9.3"
 set PGUSER=postgres
@@ -11,7 +8,6 @@ set OSM2PGSQL=osm2pgsql-cmake
 
 git clone https://github.com/alex85k/osm2pgsql-cmake.git %OSM2PGSQL%
 cd %OSM2PGSQL%
-
 
 if "%compiler%" == "MINGW" (
    SET "PATH=%MSYSDIR%;%PREFIX%\bin;%PATH%"
@@ -36,6 +32,7 @@ if "%compiler%" == "MINGW" (
   copy /y "c:\mingw64\bin\libgcc*.dll" osm2pgsql-cpp-bin
   copy /y "c:\mingw64\bin\libstd*.dll" osm2pgsql-cpp-bin
   copy /y "c:\mingw64\bin\libwinp*.dll" osm2pgsql-cpp-bin
+  copy /y %PREFIX%\bin\libxml2.dll osm2pgsql-cpp-bin
   copy /y %PREFIX%\bin\liblua.dll osm2pgsql-cpp-bin
   copy /y %PREFIX%\bin\libgeos.dll osm2pgsql-cpp-bin
   copy /y %PREFIX%\bin\libproj*.dll osm2pgsql-cpp-bin
