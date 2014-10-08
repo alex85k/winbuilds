@@ -5,6 +5,7 @@ call fetch.bat http://download.osgeo.org/proj/proj-4.8.0.zip proj-4.8.0
 
 cd proj-4.8.0
 
+set INSTDIR=%PREFIX%
 if "%compiler%" == "MINGW" (
   SET "PATH=%MSYSDIR%;%PATH%"
   if NOT EXIST Makefile (bash -c "./configure %CONFARGS%")
@@ -17,7 +18,6 @@ if "%compiler%" == "MINGW" (
   ) else (
      set OPTFLAGS=	/nologo /Ox /Op /MD
   )
-  set INSTDIR=%PREFIX%
   set PROJ_LIB_DIR=%INSTDIR%\\share
   nmake /f makefile.vc install-all
   %ER%
