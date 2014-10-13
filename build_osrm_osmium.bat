@@ -1,7 +1,7 @@
 setlocal
 call settings.bat
 
-set TBB_INSTALL_DIR=d:/libs/tbb
+set TBB_INSTALL_DIR=d:\tbb
 set TBB_ARCH_PLATFORM=intel64/vc12
  
 git clone https://github.com/Project-OSRM/osrm-backend osrm-backend-osmium
