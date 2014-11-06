@@ -5,7 +5,7 @@ call fetch.bat http://download.osgeo.org/proj/proj-4.8.0.zip proj-4.8.0
 
 cd proj-4.8.0
 
-set INSTDIR=%PREFIX%
+set INSTDIR=%PREFIX:\=\\%
 if "%compiler%" == "MINGW" (
   SET "PATH=%MSYSDIR%;%PATH%"
   if NOT EXIST Makefile (bash -c "./configure %CONFARGS%")
@@ -23,7 +23,6 @@ if "%compiler%" == "MINGW" (
   %ER%
 )
 
-copy /y src\*.pdb %PREFIX%\bin
 copy /y src\*.pdb %PREFIX%\bin
 
 cd ..
