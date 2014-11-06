@@ -1,8 +1,7 @@
 setlocal
 call settings.bat
 
-rem git clone https://github.com/osmcode/osmium-contrib
-git clone -b windows https://github.com/alex85k/osmium-contrib
+git clone https://github.com/osmcode/osmium-contrib
 cd osmium-contrib
 
 mkdir build-cmake
