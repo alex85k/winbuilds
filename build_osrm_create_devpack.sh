@@ -1,6 +1,8 @@
 CD=`pwd`
 osrm_libs=$CD/osrm_libs/libs
-TBB=/d/tbb
+
+# SPECIFY TBB folder
+TBB=$CD/../tbb
 
 rm -rf $osrm_libs
 mkdir -p $osrm_libs
@@ -14,6 +16,7 @@ mkdir -p osrm_libs/boost_min/include
 cd $BOOST_ROOT
 echo "Copying needed Boost headers to osrm_libs/boost_min..."
 ./batch.sh
+
 cp -r --parents include/boost-1_57/boost/thread $CD/osrm_libs/boost_min
 cp -r --parents include/boost-1_57/boost/detail $CD/osrm_libs/boost_min
 cp -r --parents include/boost-1_57/boost/uuid $CD/osrm_libs/boost_min
@@ -119,7 +122,9 @@ if \"%VARIANT%\"==\"Debug\" (copy *.pdb ..\..\osrm-bin)
 cd ..\profiles
 echo disk=c:\temp\stxxl,10000,wincall > .stxxl.txt
 copy *.* ..\..\osrm-bin
-xcopy /d /y lib ..\..\osrm-bin
+copy car.lua ..\..\osrm-bin\profile.lua
+xcopy /y lib ..\..\osrm-bin\lib\ 
+copy %PREFIX:/=\\%\bin\*.dll ..\..\osrm-bin
 
 cd ..\..\osrm-bin
 
