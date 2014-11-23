@@ -21,6 +21,7 @@ cp -r --parents include/boost-1_57/boost/thread $CD/osrm_libs/boost_min
 cp -r --parents include/boost-1_57/boost/detail $CD/osrm_libs/boost_min
 cp -r --parents include/boost-1_57/boost/uuid $CD/osrm_libs/boost_min
 cp -r --parents include/boost-1_57/boost/exception $CD/osrm_libs/boost_min
+cp -r --parents include/boost-1_57/boost/range $CD/osrm_libs/boost_min
 cp -r --parents include/boost-1_57/boost/smart_ptr $CD/osrm_libs/boost_min
 cp -r --parents include/boost-1_57/boost/test $CD/osrm_libs/boost_min
 cp -r include/boost-1_57/boost/*.hpp $CD/osrm_libs/boost_min/include/boost-1_57/boost
@@ -113,7 +114,7 @@ cd osrm-backend
 mkdir build
 cd build
 cmake .. -G \"Visual Studio 12 Win64\" -DBoost_ADDITIONAL_VERSIONS=1.57 -DCMAKE_BUILD_TYPE=%VARIANT% -DCMAKE_INSTALL_PREFIX=%PREFIX% -DBOOST_ROOT=%BOOST_ROOT% -DBoost_USE_STATIC_LIBS=ON -T CTP_Nov2013
-msbuild /p:Configuration=%Variant% /clp:Verbosity=normal /nologo OSRM.sln
+msbuild /p:Configuration=%Variant% /clp:Verbosity=normal /nologo OSRM.sln /flp1:logfile=build_errors.txt;errorsonly /flp2:logfile=build_warnings.txt;warningsonly
 copy /y %VARIANT%\*.pdb .
 copy /y %VARIANT%\*.exe .
 
