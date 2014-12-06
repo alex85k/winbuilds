@@ -8,7 +8,7 @@ rem cmake -G %CMAKE_TARGET% -DCMAKE_BUILD_TYPE=%VARIANT% -DCMAKE_INSTALL_PREFIX=
 rem %MAKEC% install
 
 git clone https://github.com/alex85k/protobuf-cmake.git
-git clone -b 2.6.1 https://github.com/google/protobuf.git
+git clone -b v2.6.1 https://github.com/google/protobuf.git
 
 set "PDIR=%CD%\protobuf"
 
