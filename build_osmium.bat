@@ -8,12 +8,12 @@ set TESTS=ON
 set ALLHPPS=OFF
 
 if "%COMPILER%" == "MINGW" (
-   %CMAKE% .. -DBOOST_ROOT=%BOOST_ROOT% -DBoost_USE_STATIC_LIBS=ON -DBUILD_TESTING=%TESTS% -DBUILD_TRY_HPPS=%ALLHPPS%
+   %CMAKE% .. -DBOOST_ROOT=%BOOST_ROOT% -DBoost_USE_STATIC_LIBS=ON -DBUILD_TESTING=%TESTS% -DBUILD_TRY_HPPS=%ALLHPPS% -DBoost_ADDITIONAL_VERSIONS=1.57
    %ER%
    mingw32-make
    %ER%
 ) else (
-   cmake .. -G "Visual Studio 12 Win64" -DCMAKE_BUILD_TYPE=%Variant% -DCMAKE_INSTALL_PREFIX=%PREFIX% -DBOOST_ROOT=%BOOST_ROOT% -DBoost_USE_STATIC_LIBS=ON -DBUILD_TESTING=%TESTS% -DBUILD_TRY_HPPS=%ALLHPPS% -T CTP_Nov2013
+   cmake .. -G "Visual Studio 12 Win64" -DCMAKE_BUILD_TYPE=%Variant% -DCMAKE_INSTALL_PREFIX=%PREFIX% -DBOOST_ROOT=%BOOST_ROOT% -DBoost_USE_STATIC_LIBS=ON -DBUILD_TESTING=%TESTS% -DBUILD_TRY_HPPS=%ALLHPPS% -DBoost_ADDITIONAL_VERSIONS=1.57 -T CTP_Nov2013 
    %ER%
    msbuild /p:Configuration=%Variant% /clp:Verbosity=minimal /nologo libosmium.sln /flp1:logfile=build_errors.txt;errorsonly /flp2:logfile=build_warnings.txt;warningsonly
    %ER%
