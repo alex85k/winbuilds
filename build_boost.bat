@@ -1,12 +1,12 @@
 setlocal
 call settings.bat 
 echo "Downloading and unpacking Boost:"
-call fetch.bat "http://downloads.sourceforge.net/project/boost/boost/1.57.0/boost_1_57_0.7z" boost_1_57_0 > nul
+call fetch.bat "http://downloads.sourceforge.net/project/boost/boost/1.58.0/boost_1_58_0.7z" boost_1_58_0 > nul
 echo "OK"
 
 set src=%CD%
                 
-cd boost_1_57_0
+cd boost_1_58_0
 
 if "%COMPILER:-32=%"=="%COMPILER%"  (
   set "BITS=64"
