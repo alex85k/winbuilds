@@ -1,7 +1,7 @@
 setlocal
 call settings.bat
 
-call fetch.bat ftp://xmlsoft.org/libxml2/libxml2-2.9.1.tar.gz libxml2-2.9.1
+call fetch.bat ftp://xmlsoft.org/libxml2/libxml2-2.9.2.tar.gz libxml2-2.9.2
 
 if "%compiler%" == "MINGW" (
   SET FLAGS="compiler=mingw"  
@@ -9,7 +9,9 @@ if "%compiler%" == "MINGW" (
   SET FLAGS="iconv=no" 
 )
 
-cd libxml2-2.9.1
+cd libxml2-2.9.2
+copy configure.ac configure.in
+
 if "%compiler%" == "MINGW" (
   SET "PATH=%MSYSDIR%;%PATH%"
   if NOT EXIST Makefile (bash -c "./configure %CONFARGS% --without-python")
@@ -19,13 +21,14 @@ if "%compiler%" == "MINGW" (
 ) else (
   cd win32
   if  "%Variant%" == "Debug"  (
-    "%SEDC%" -i makefile.Msvc -e "s@/Z7$@/Z7 /MDd@"
-     cscript.exe configure.js debug=yes %FLAGS% prefix=%PREFIX%
+    rem "%SEDC%" -i makefile.Msvc -e "s@/Z7$@/Z7 /MDd@"
+     cscript.exe configure.js debug=yes %FLAGS% prefix=%PREFIX%  cruntime=/MDd
   ) else (
      cscript.exe configure.js %FLAGS% prefix=%PREFIX%
 )
 
   nmake install
+  rem nmake checktests
 )
 del %PREFIX%\bin\test*.exe
 del %PREFIX%\bin\test*.pdb
