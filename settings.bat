@@ -30,10 +30,12 @@ if "%COMPILER%"=="MINGW" (
   )
   if "%COMPILER%"=="MSVC2013"  (
      set MSC_VER=12
+     set "GENERATOR=Visual Studio 12 2013 Win64"
      call "%VS120COMNTOOLS%\..\..\VC\vcvarsall.bat" x86_amd64
   )
-  if "%COMPILER%"=="MSVC2014"  (
+  if "%COMPILER%"=="MSVC2015"  (
      set MSC_VER=14
+     set "GENERATOR=Visual Studio 14 2015 Win64"
      call "%VS140COMNTOOLS%\..\..\VC\vcvarsall.bat" amd64
   )
   set "CMAKE=cmake -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=%VARIANT% -DCMAKE_INSTALL_PREFIX=%PREFIX%"
