@@ -15,6 +15,9 @@ if "%COMPILER%"=="MINGW" (
   set "CMAKE=cmake -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=%VARIANT% -DCMAKE_INSTALL_PREFIX=%PREFIX%"
   SET "MAKEC=mingw32-make"
   SET "SEDC=sed"
+  SET GENERATOR="MinGW Makefiles"
+  SET PREFIX1=%PREFIX:\=/%
+  SET "MSBUILDINSTALL=mingw32-make install"
 ) else (
   if "%COMPILER%"=="MSVC2008-32"  (
       set MSC_VER=9
@@ -35,11 +38,13 @@ if "%COMPILER%"=="MINGW" (
   )
   if "%COMPILER%"=="MSVC2015"  (
      set MSC_VER=14
-     set "GENERATOR=Visual Studio 14 2015 Win64"
+     set "GENERATOR= -G"Visual Studio 14 2015 Win64""
      call "%VS140COMNTOOLS%\..\..\VC\vcvarsall.bat" amd64
   )
   set "CMAKE=cmake -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=%VARIANT% -DCMAKE_INSTALL_PREFIX=%PREFIX%"
-  SET "MAKEC=nmake"
+  SET "MAKEC=nmake
+  SET PREFIX1=%PREFIX:\=/%
+  SET "MSBUILDINSTALL=msbuild /p:Configuration=%Variant% /p:BuildInParallel=true /clp:Verbosity=normal /nologo  /flp1:logfile=build_errors.txt;errorsonly /flp2:logfile=build_warnings.txt;warningsonly INSTALL.vcxproj"
   SET "SEDC=C:\Program Files (x86)\Git\bin\sed"
 )
 

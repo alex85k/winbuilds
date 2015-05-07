@@ -14,9 +14,9 @@ set "PDIR=%CD%\protobuf"
 
 cd protobuf-cmake
 
-%CMAKE% -DPROTOBUF_ROOT=%PDIR%
+cmake %GENERATOR% -DPROTOBUF_ROOT=%PDIR% -DCMAKE_BUILD_TYPE=%VARIANT% -DCMAKE_INSTALL_PREFIX=%PREFIX1%
 %ER%
-%MAKEC%  install
+%MSBUILDINSTALL%
 %ER%
 
 rem ctest -VV 1>tests.log 2>&1

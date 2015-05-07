@@ -8,9 +8,10 @@ cd stxxl
 mkdir build
 cd build
 
-%CMAKE% ..
+
+cmake .. %GENERATOR% -DCMAKE_BUILD_TYPE=%VARIANT% -DCMAKE_INSTALL_PREFIX=%PREFIX%
 %ER%
-%MAKEC% install
+%MSBUILDINSTALL%
 %ER%
 
 cd ..
