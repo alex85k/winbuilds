@@ -1,25 +1,22 @@
 setlocal
 call settings.bat
 
-if "%COMPILER%"=="MSVC2013" (
-   git clone https://github.com/alex85k/libiconv.git
-) else (
-   git clone https://github.com/coapp-packages/libiconv.git
-)
-
 if "%COMPILER%" == "MINGW" (
    echo "Iconv should be already bundled with MINGW"
    exit /b 0
+)  else (
+   git clone https://github.com/alex85k/libiconv-for-Windows.git
 )
 
-cd libiconv\COPKG\libiconv
+cd libiconv-for-Windows
 
-msbuild /p:Configuration=%Variant% /clp:Verbosity=minimal /nologo libiconv.vcxproj /flp1:logfile=build_errors.txt;errorsonly /flp2:logfile=build_warnings.txt;warningsonly
+rmdir /s /q obj lib lib64
+msbuild /p:Configuration=%Variant% /clp:Verbosity=minimal /nologo LibIconv.sln /flp1:logfile=build_errors.txt;errorsonly /flp2:logfile=build_warnings.txt;warningsonly
 
-copy /y x64\%Variant%\*.lib %PREFIX%\lib
-copy /y x64\%Variant%\libiconv.lib %PREFIX%\lib\iconv.lib
-copy /y x64\%Variant%\*.dll %PREFIX%\bin
-copy /y *.h %PREFIX%\include
+copy /y lib64\libiconvD.lib %PREFIX%\lib\iconv.lib
+copy /y lib64\libiconv.lib %PREFIX%\lib\iconv.lib
+copy /y lib64\*.dll %PREFIX%\bin
+copy /y include\*.h %PREFIX%\include
 
 cd ..\..\..
 
