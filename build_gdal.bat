@@ -28,6 +28,10 @@ if "%COMPILER:32=%"=="%COMPILER%" (
   "%SEDC%" -i nmake.opt -e "s@#WIN64@WIN64@"
 )
 
+
+echo "Using latest cpl_config.h.vc file to support newer compilers"
+git checkout origin/HEAD port/cpl_config.h.vc
+
 rem "%SEDC%" -i nmake.opt -e "s@DLLBUILD=1@DLLBUILD=0@"
 
 "%SEDC%" -i nmake.opt -e "s@#SQLITE_INC=.*@SQLITE_INC=-I$(PREFIX)\\\\include -DHAVE_SPATIALITE@"
@@ -41,13 +45,16 @@ rem "%SEDC%" -i nmake.opt -e "s@DLLBUILD=1@DLLBUILD=0@"
 "%SEDC%" -i nmake.opt -e "s@#FREEXL_LIBS =.*@FREEXL_LIBS = $(PREFIX)\\\\lib\\\\freexl.lib@"
 
 "%SEDC%" -i nmake.opt -e "s@#LIBICONV_INCLUDE =.*@LIBICONV_INCLUDE = -I$(PREFIX)\\\\include@"
-"%SEDC%" -i nmake.opt -e "s@#LIBICONV_LIBRARY =.*@LIBICONV_LIBRARY = $(PREFIX)\\\\lib\\\\libiconv.lib@"
+"%SEDC%" -i nmake.opt -e "s@#LIBICONV_LIBRARY =.*@LIBICONV_LIBRARY = $(PREFIX)\\\\lib\\\\iconv.lib@"
 "%SEDC%" -i nmake.opt -e "s@#LIBICONV_CFLAGS =.*@LIBICONV_CFLAGS = -DICONV_CONST=const@"
 
 
 "%SEDC%" -i nmake.opt -e "s@#PROJ_FLAGS =.*@PROJ_FLAGS = -DPROJ_STATIC@"
 "%SEDC%" -i nmake.opt -e "s@#PROJ_INCLUDE =.*@PROJ_INCLUDE = -I$(PREFIX)\\\\include@"
 "%SEDC%" -i nmake.opt -e "s@#PROJ_LIBRARY =.*@PROJ_LIBRARY = $(PREFIX)\\\\lib\\\\proj.lib@"
+
+
+"%SEDC%" -i nmake.opt -e "s@ODBC_SUPPORTED = 1@#ODBC_SUPPORTED = 1@"
 
 rem "%SEDC%" -i nmake.opt -e s@#SQLITE_LIB=.*@SQLITE_LIB=\$\(PREFIX\)\\\\lib\\\\sqlite3.lib@"
 rem "%SEDC%" -i nmake.opt -e "s@#SQLITE_INC=.*@SQLITE_INC=-I\$\(PREFIX\)\\\\include@"
