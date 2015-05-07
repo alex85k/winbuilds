@@ -1,9 +1,8 @@
 setlocal
 call settings.bat
 
-call fetch.bat http://download.osgeo.org/proj/proj-4.8.0.zip proj-4.8.0
-
-cd proj-4.8.0
+call fetch.bat http://download.osgeo.org/proj/proj-4.9.1.tar.gz proj-4.9.1
+cd proj-4.9.1
 
 set INSTDIR=%PREFIX:\=\\%
 if "%compiler%" == "MINGW" (
