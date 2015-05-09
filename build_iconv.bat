@@ -5,7 +5,7 @@ if "%COMPILER%" == "MINGW" (
    echo "Iconv should be already bundled with MINGW"
    exit /b 0
 )  else (
-   git clone https://github.com/alex85k/libiconv-for-Windows.git
+   git clone https://github.com/pffang/libiconv-for-Windows.git
 )
 
 cd libiconv-for-Windows
