@@ -21,19 +21,27 @@ if "%COMPILER%"=="MINGW" (
 ) else (
   if "%COMPILER%"=="MSVC2008-32"  (
       set MSC_VER=9
+     set "GENERATOR= -G"Visual Studio 12 2008""
       call "%VS90COMNTOOLS%\..\..\VC\vcvarsall.bat" x86
   )
   if "%COMPILER%"=="MSVC2010-32"  (
       set MSC_VER=10
+     set "GENERATOR= -G"Visual Studio 12 2010""
       call "%VS100COMNTOOLS%\..\..\VC\vcvarsall.bat" x86
   )
   if "%COMPILER%"=="MSVC2012"  (
      set MSC_VER=11
+     set "GENERATOR= -G"Visual Studio 12 2012 Win64""
      call "%VS110COMNTOOLS%\..\..\VC\vcvarsall.bat" x86_amd64
   )
   if "%COMPILER%"=="MSVC2013"  (
      set MSC_VER=12
-     set "GENERATOR=Visual Studio 12 2013 Win64"
+     set "GENERATOR= -G"Visual Studio 12 2013 Win64""
+     call "%VS120COMNTOOLS%\..\..\VC\vcvarsall.bat" x86_amd64
+  )
+  if "%COMPILER%"=="MSVC2013-CTP"  (
+     set MSC_VER=12
+     set "GENERATOR= -G"Visual Studio 12 2013 Win64" -T CTP_Nov2013"
      call "%VS120COMNTOOLS%\..\..\VC\vcvarsall.bat" x86_amd64
   )
   if "%COMPILER%"=="MSVC2015"  (
