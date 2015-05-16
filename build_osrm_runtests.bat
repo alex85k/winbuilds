@@ -4,9 +4,9 @@ call settings.bat
 SET PATH=%PREFIX%\bin;D:\tbb\bin\intel64\vc12;%PATH%
 
 cd osrm-backend
-echo disk=m:\temp\stxxl,1000,wincall > test\stxxl.txt
+echo disk=d:\temp\stxxl,1000,wincall > test\stxxl.txt
 SET STXXLCFG=stxxl.txt
-mkdir m:\temp
+mkdir d:\temp
 
 cucumber
 cd ..

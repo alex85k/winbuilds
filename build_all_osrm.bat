@@ -2,7 +2,7 @@ set "ERRORS="
    call wlog.bat build_bzip.bat ^
 && call wlog.bat build_zlib.bat ^
 && call wlog.bat build_expat.bat  ^
-&& call wlog.bat build_lua.bat ^
+&& call wlog.bat build_luajit.bat ^
 && call wlog.bat build_getopt.bat ^
 && call wlog.bat build_protobuf.bat ^
 && call wlog.bat build_osmpbf.bat ^
