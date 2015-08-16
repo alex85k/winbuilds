@@ -1,9 +1,9 @@
 setlocal
 call settings.bat
 
-call fetch.bat http://www.gaia-gis.it/gaia-sins/readosm-1.0.0d.tar.gz readosm-1.0.0d
+call fetch.bat http://www.gaia-gis.it/gaia-sins/readosm-1.0.0e.tar.gz readosm-1.0.0e
 
-cd readosm-1.0.0d
+cd readosm-1.0.0e
 
 if NOT EXIST %PREFIX%\include\expat.h ( echo "Sorry, need expat to build" & exit /b 1 )
 
