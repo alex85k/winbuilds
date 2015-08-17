@@ -10,8 +10,11 @@ if "%COMPILER%" == "MINGW" (
 
 cd libiconv-for-Windows
 
+devenv LibIconv.sln /Upgrade /nologo
+
 rmdir /s /q obj lib lib64
-msbuild /p:Configuration=%Variant% /clp:Verbosity=minimal /nologo LibIconv.sln /flp1:logfile=build_errors.txt;errorsonly /flp2:logfile=build_warnings.txt;warningsonly
+rem msbuild /p:Configuration=%Variant% /clp:Verbosity=minimal /nologo LibIconv.sln /flp1:logfile=build_errors.txt;errorsonly /flp2:logfile=build_warnings.txt;warningsonly
+%MSBUILD%
 
 copy /y lib64\libiconvD.lib %PREFIX%\lib\iconv.lib
 copy /y lib64\libiconv.lib %PREFIX%\lib\iconv.lib
