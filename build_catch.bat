@@ -12,7 +12,7 @@ if "%COMPILER%"=="MINGW" (
 %ER%
 %MAKEC%
 %ER%
-ctest -VV
+ctest -VV >..\..\..\%~n0_tests.log
 %ER%
 
 cd ..\..\..
