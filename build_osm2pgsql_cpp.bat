@@ -1,9 +1,9 @@
 setlocal
 call settings.bat
 
-set "PSQL_ROOT=C:\Program Files\PostgreSQL\9.3"
+set "PSQL_ROOT=C:\Program Files\PostgreSQL\9.4"
 set PGUSER=postgres
-set PGPASSWORD=
+set PGPASSWORD=admin
 set OSM2PGSQL=osm2pgsql-cmake
 
 git clone https://github.com/alex85k/osm2pgsql-cmake.git %OSM2PGSQL%
@@ -12,10 +12,10 @@ cd %OSM2PGSQL%
 if "%compiler%" == "MINGW" (
    SET "PATH=%MSYSDIR%;%PREFIX%\bin;%PATH%"
 ) else (
-   set CMAKE_PREFIX_PATH=%PREFIX%;C:\Program Files\PostgreSQL\9.3
+   set CMAKE_PREFIX_PATH=%PREFIX%;C:\Program Files\PostgreSQL\9.4
 )
 
-%CMAKE% -DBOOST_ROOT=%BOOST_ROOT% -DBoost_USE_STATIC_LIBS=ON -DBUILD_PBF=ON -DBUILD_TESTS=ON -DBoost_ADDITIONAL_VERSIONS=1.57
+%CMAKE% -DBOOST_ROOT=%BOOST_ROOT% -DBoost_USE_STATIC_LIBS=ON -DBUILD_PBF=ON -DBUILD_TESTS=ON -DBoost_ADDITIONAL_VERSIONS=1.57;1.58;1.59
 %ER%
 %MAKEC% install
 %ER%
