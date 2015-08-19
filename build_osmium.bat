@@ -1,8 +1,8 @@
 setlocal
 call settings.bat
 
+git clone https://github.com/osmcode/osm-testdata
 git clone https://github.com/osmcode/libosmium.git libosmium
-
 
 cd libosmium
 
@@ -36,5 +36,11 @@ if "%COMPILER%" == "MINGW" (
    %ER%
 )
 
+mkdir %PREFIX%\include\protozero
+xcopy /i /y /e ..\include\protozero %PREFIX%\include\protozero
+mkdir %PREFIX%\include\utf8
+xcopy /i /y /e ..\include\utf8 %PREFIX%\include\utf8
+
+copy /y ..\include\utf8.h %PREFIX%\include
 cd ..\..
 
