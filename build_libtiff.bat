@@ -1,9 +1,9 @@
 setlocal
 call settings.bat
 
-call fetch.bat  http://download.osgeo.org/libtiff/tiff-3.9.4.zip tiff-3.9.4
+call fetch.bat  http://download.osgeo.org/libtiff/tiff-4.0.4.zip tiff-4.0.4
 
-cd tiff-3.9.4
+cd tiff-4.0.4
 
 if "%compiler%" == "MINGW" (
    SET "PATH=%MSYSDIR%;c:\mingw64\bin;%PREFIX%\bin;%PATH%"
@@ -15,8 +15,12 @@ if "%compiler%" == "MINGW" (
    if  "%Variant%" == "Debug"  (
 rem   "%SEDC%" -i makefile.msc -e "s@-MD @ -MDd @"
 )
-   nmake /f makefile.vc install
+   nmake /f Makefile.vc lib
    %ER%
+   copy /y libtiff\*.lib %PREFIX%\lib
+   copy /y libtiff\*.dll %PREFIX%\bin
+   copy /y libtiff\*.h %PREFIX%\include
+rem    copy /y libbz2.a %PREFIX%\lib\bzip2.a
 )
 
 cd ..
