@@ -21,6 +21,7 @@ if "%compiler%" == "MINGW" (
   %MSBUILDINSTALL%
   %ER%
   copy /y %PREFIX%\lib\proj_4_9.lib %PREFIX%\lib\proj.lib 
+  copy /y %PREFIX%\lib\proj_4_9_d.lib %PREFIX%\lib\proj.lib
 )
 
 cd ..
