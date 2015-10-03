@@ -1,9 +1,9 @@
 setlocal
 call settings.bat
 
-call fetch.bat http://www.gaia-gis.it/gaia-sins/spatialite-tools-4.2.0.tar.gz spatialite-tools-4.2.0
+call fetch.bat http://www.gaia-gis.it/gaia-sins/spatialite-tools-4.3.0.tar.gz spatialite-tools-4.3.0
 
-cd spatialite-tools-4.2.0
+cd spatialite-tools-4.3.0
 
 SET "PREFIX1=%PREFIX:\=/%"
 
