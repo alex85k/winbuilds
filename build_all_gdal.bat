@@ -10,6 +10,6 @@ set "ERRORS="
 && call wlog.bat build_spatialite_tools.bat ^
 && call wlog.bat build_curl.bat ^
 && del /y %prefix%\bin\curl.exe ^
-&& call wlog.bat build_gdal.bat
+&& call wlog.bat build_gdal2.bat
 
 echo Builds with errors: %ERRORS%
