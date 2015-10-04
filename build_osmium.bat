@@ -44,5 +44,6 @@ mkdir %PREFIX%\include\utf8
 xcopy /i /y /e ..\include\utf8 %PREFIX%\include\utf8
 
 copy /y ..\include\utf8.h %PREFIX%\include
+copy /y ..\include\gdalcpp.hpp %PREFIX%\include
 cd ..\..
 
