@@ -19,6 +19,9 @@ if NOT EXIST %FN% (
 )
 
 if NOT EXIST %2 (
+ if x%FN:.tgz=% NEQ x%FN% (
+  tar xvfz %FN%
+ ) else (
  if x%FN:.gz=% NEQ x%FN% (
   tar xvfz %FN%
  ) else (
@@ -26,6 +29,7 @@ if NOT EXIST %2 (
   tar xvfj %FN%
  ) else (
   7z x %FN%
+ )
  )
 )
 )
