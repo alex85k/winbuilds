@@ -1,7 +1,7 @@
 setlocal
 call settings.bat
 
-call fetch.bat ftp://xmlsoft.org/libxml2/libxml2-2.9.2.tar.gz libxml2-2.9.2
+call fetch.bat http://xmlsoft.org/sources/libxml2-2.9.2.tar.gz libxml2-2.9.2
 
 if "%compiler%" == "MINGW" (
   SET FLAGS="compiler=mingw"  
