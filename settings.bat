@@ -1,5 +1,5 @@
-if "%COMPILER%"=="" SET COMPILER=MSVC2013
-if "%PREFIX%"=="" SET PREFIX=d:\libs18d
+if "%COMPILER%"=="" SET COMPILER=MSVC2015
+if "%PREFIX%"=="" SET PREFIX=d:\libs2015d
 if "%BOOST_ROOT%"=="" SET BOOST_ROOT=d:\boost
 if "%VARIANT%"=="" SET Variant=Debug
 
@@ -54,7 +54,7 @@ if "%COMPILER%"=="MINGW" (
   SET PREFIX1=%PREFIX:\=/%
   SET "MSBUILDINSTALL=msbuild /p:Configuration=%Variant% /p:BuildInParallel=true /clp:Verbosity=normal /nologo  /flp1:logfile=build_errors.txt;errorsonly /flp2:logfile=build_warnings.txt;warningsonly INSTALL.vcxproj"
   SET "MSBUILD=msbuild /p:Configuration=%Variant% /p:BuildInParallel=true /clp:Verbosity=normal /nologo  /flp1:logfile=build_errors.txt;errorsonly /flp2:logfile=build_warnings.txt;warningsonly"
-  SET "SEDC=C:\Program Files (x86)\Git\bin\sed"
+  SET "SEDC=C:\Program Files\Git\usr\bin\sed"
 )
 
 if NOT EXIST %PREFIX% mkdir %PREFIX%

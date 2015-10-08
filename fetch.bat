@@ -1,5 +1,5 @@
 set "PATH2=%PATH%"
-set "PATH=%PATH2%;C:\Program Files (x86)\Git\bin"
+set "PATH=%PATH2%;C:\Program Files\Git\usr\bin"
 set D=%1
 
 
@@ -19,11 +19,15 @@ if NOT EXIST %FN% (
 )
 
 if NOT EXIST %2 (
- if x%FN:gz=%==x%FN% (
-  7z x %FN%
- ) else (
+ if x%FN:.gz=% NEQ x%FN% (
   tar xvfz %FN%
+ ) else (
+ if x%FN:.bz2=% NEQ x%FN% (
+  tar xvfj %FN%
+ ) else (
+  7z x %FN%
  )
+)
 )
 
 set "PATH=%PATH2%"
