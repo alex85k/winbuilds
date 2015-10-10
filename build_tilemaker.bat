@@ -21,7 +21,9 @@ copy *.lua dist
 copy %PREFIX%\bin\lua.dll dist
 
 echo FOR %%%%G IN (*.osm.pbf) DO tilemaker %%%%G --output tiles/  > dist\convert.bat
-
+echo FOR %%%%G IN (*.osm.pbf) DO tilemaker %%%%G --output tiles.mbtiles  > dist\convert_mbtiles.bat
+"%SEDC%" -i dist/config.json -e "s@\"minzoom\":[^,]*,@\"minzoom\": 1,@"
+"%SEDC%" -i dist/config.json -e "s@\"gzip\"@\"none\"@"
 
 cd ..\..
 
