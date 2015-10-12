@@ -1,8 +1,8 @@
 setlocal
 call settings.bat
 
-rem git clone https://github.com/systemed/tilemaker.git
-git clone https://github.com/alex85k/tilemaker.git
+git clone https://github.com/systemed/tilemaker.git
+rem git clone https://github.com/alex85k/tilemaker.git
 
 cd tilemaker
 mkdir build
