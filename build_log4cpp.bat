@@ -14,6 +14,7 @@ cmake .. %GENERATOR% -DCMAKE_BUILD_TYPE=%VARIANT% -DCMAKE_INSTALL_PREFIX=%PREFIX
 %ER%
 %MSBUILDINSTALL%
 %ER%
+copy %PREFIX%\lib\log4cppD.lib %PREFIX%\lib\log4cpp.lib
 
 cd ..\..
                                   
