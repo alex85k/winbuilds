@@ -2,7 +2,7 @@ setlocal
 call settings.bat
 
 rem svn checkout http://svn.osgeo.org/geos/trunk geos-svn
-git clone --depth 1 https://github.com/alacarte-maps/alacarte.git
+git clone --depth 1 https://github.com/alex85k/alacarte.git
 
 cd alacarte
 
