@@ -1,7 +1,7 @@
 setlocal
 call settings.bat
 
-git clone https://github.com/bagder/curl
+git clone --depth 1 https://github.com/bagder/curl
 cd curl
 
 cmake %GENERATOR% -DCMAKE_BUILD_TYPE=%VARIANT% -DCMAKE_INSTALL_PREFIX=%PREFIX1%

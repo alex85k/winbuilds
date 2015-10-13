@@ -1,7 +1,7 @@
 setlocal
 call settings.bat
 
-git clone https://github.com/CMakePorts/cmake.pixman.git pixman
+git clone --depth 1 https://github.com/CMakePorts/cmake.pixman.git pixman
 
 cd pixman
 

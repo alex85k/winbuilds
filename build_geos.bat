@@ -2,7 +2,7 @@ setlocal
 call settings.bat
 
 rem svn checkout http://svn.osgeo.org/geos/trunk geos-svn
-git clone -b 3.5.0 https://github.com/libgeos/libgeos.git geos
+git clone --depth 1 -b 3.5.0 https://github.com/libgeos/libgeos.git geos
 
 cd geos
 
