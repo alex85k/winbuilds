@@ -9,12 +9,13 @@ cd alacarte
 mkdir build
 cd build
 
-cmake .. %GENERATOR% -DCMAKE_BUILD_TYPE=%VARIANT% -DCMAKE_INSTALL_PREFIX=%PREFIX1% -DBOOST_ROOT=%BOOST_ROOT% -DBoost_USE_STATIC_LIBS=ON -DBoost_ADDITIONAL_VERSIONS=1.58;1.59
+cmake .. %GENERATOR% -DCMAKE_BUILD_TYPE=%VARIANT% -DCMAKE_INSTALL_PREFIX=%PREFIX1% -DBUILD_TESTS=ON -DBOOST_ROOT=%BOOST_ROOT% -DBoost_USE_STATIC_LIBS=ON -DBoost_ADDITIONAL_VERSIONS=1.58;1.59
 %ER%
 %MSBUILDINSTALL%
 %ER%
-%MSBUILD% tests.vcxproj
-%ER%
+
+set PATH=%PATH%;%PREFIX%\bin
+ctest -C %Variant% -VV >..\..\%~n0_tests.log
 
 cd ..\..
                                   
