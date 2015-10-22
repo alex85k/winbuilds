@@ -24,7 +24,6 @@ mkdir osm2pgsql-bin
 copy /y osm2pgsql\build\%VARIANT%\*.exe osm2pgsql-bin
 copy /y osm2pgsql\*.style osm2pgsql-bin
 copy /y osm2pgsql\*.lua osm2pgsql-bin
-copy /y %PREFIX%\bin\libxml2.dll osm2pgsql-bin
 copy /y %PREFIX%\bin\lua.dll osm2pgsql-bin
 copy /y %PREFIX%\bin\geos.dll osm2pgsql-bin
 copy /y "%PSQL_ROOT%\bin\libpq.dll" osm2pgsql-bin
