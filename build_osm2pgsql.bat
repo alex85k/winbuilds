@@ -13,12 +13,12 @@ cd build
 
 set CMAKE_PREFIX_PATH=%PREFIX%;C:\Program Files\PostgreSQL\9.4
 
-cmake .. -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=%VARIANT% -DCMAKE_INSTALL_PREFIX=%PREFIX1% -DBOOST_ROOT=%BOOST_ROOT% -DBoost_USE_STATIC_LIBS=ON -DBUILD_TESTS=ON
+%CMAKEVS% .. -DBOOST_ROOT=%BOOST_ROOT% -DBoost_USE_STATIC_LIBS=ON -DBUILD_TESTS=ON
 %ER%
 rem nmake test-expire-tiles
 rem nmake test ARGS="--build-and-test"
 rem nmake check
-nmake install
+%MSBUILDINSTALL%
 rem install
 %ER%
 

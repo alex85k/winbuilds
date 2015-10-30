@@ -50,12 +50,13 @@ if "%COMPILER%"=="MINGW" (
      call "%VS140COMNTOOLS%\..\..\VC\vcvarsall.bat" amd64
   )
   set "CMAKE=cmake -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=%VARIANT% -DCMAKE_INSTALL_PREFIX=%PREFIX%"
-  SET "MAKEC=nmake
+  SET "MAKEC=nmake"
   SET PREFIX1=%PREFIX:\=/%
   SET "MSBUILDINSTALL=msbuild /p:Configuration=%Variant% /p:BuildInParallel=true /clp:Verbosity=normal /nologo  /flp1:logfile=build_errors.txt;errorsonly /flp2:logfile=build_warnings.txt;warningsonly INSTALL.vcxproj"
   SET "MSBUILD=msbuild /p:Configuration=%Variant% /p:BuildInParallel=true /clp:Verbosity=normal /nologo  /flp1:logfile=build_errors.txt;errorsonly /flp2:logfile=build_warnings.txt;warningsonly"
   SET "SEDC=C:\Program Files\Git\usr\bin\sed"
 )
+set "CMAKEVS=cmake %GENERATOR% -DCMAKE_BUILD_TYPE=%VARIANT% -DCMAKE_INSTALL_PREFIX=%PREFIX%"
 
 if NOT EXIST %PREFIX% mkdir %PREFIX%
 if NOT EXIST %PREFIX%\include mkdir %PREFIX%\include
