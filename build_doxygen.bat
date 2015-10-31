@@ -1,8 +1,7 @@
 setlocal
 call settings.bat
 
-rem svn checkout http://svn.osgeo.org/geos/trunk geos-svn
-git clone --depth 10 https://github.com/alex85k/doxygen.git
+git clone --depth 10 https://github.com/doxygen/doxygen.git
 
 cd doxygen
 mkdir build
