@@ -15,11 +15,11 @@ cacls temp /T /E /G postgres:F
 
 set "PATH=%CD%\osm2pgsql-bin;C:\Python27;%PATH%"
 
-cd osm2pgsql\build
+cd osm2pgsql1\build
 
 echo "Running tests - see build_osm2pgsql_cpp_testing.log..."
 rem %CD%;%PREFIX%\bin;C:\Program Files\PostgreSQL\9.3;%PATH%
-ctest -VV -C %Variant% -LE FlatNodes >..\..\build_osm2pgsql_testing.log 2>&1
+ctest -VV -C %Variant% -LE FlatNodes >..\..\build_osm2pgsql_testing1.log 2>&1
 rem ctest -VV -L NoDB >..\..\build_osm2pgsql_testing.log 2>&1
 rem ctest -VV -R xml >..\..\build_osm2pgsql_testing.log 2>&1
 %ER%
