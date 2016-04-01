@@ -1,9 +1,8 @@
 setlocal
 call settings.bat
 
-call fetch.bat http://sparsehash.googlecode.com/files/sparsehash-2.0.2.zip sparsehash-2.0.2
-
-cd sparsehash-2.0.2
+call fetch.bat https://github.com/sparsehash/sparsehash/archive/sparsehash-2.0.3.zip sparsehash-sparsehash-2.0.3
+cd sparsehash-sparsehash-2.0.3
 
 xcopy /d /y /e src\google %PREFIX%\include\google\
 xcopy /d /y /e src\sparsehash %PREFIX%\include\sparsehash\
