@@ -1,8 +1,7 @@
 setlocal
 call settings.bat
 
-rem git clone -b master https://github.com/protobuf-c/protobuf-c.git
-git clone -b master https://github.com/alex85k/protobuf-c.git
+git clone -b master https://github.com/protobuf-c/protobuf-c.git
 
 cd protobuf-c/build-cmake
 
