@@ -1,7 +1,7 @@
 setlocal
 call settings.bat
 
-call fetch.bat http://xmlsoft.org/sources/libxml2-2.9.2.tar.gz libxml2-2.9.2
+call fetch.bat http://xmlsoft.org/sources/libxml2-2.9.3.tar.gz libxml2-2.9.3
 
 if "%compiler%" == "MINGW" (
   SET FLAGS="compiler=mingw"  
@@ -9,7 +9,7 @@ if "%compiler%" == "MINGW" (
   SET FLAGS="iconv=no" 
 )
 
-cd libxml2-2.9.2
+cd libxml2-2.9.3
 copy configure.ac configure.in
 
 if "%compiler%" == "MINGW" (
