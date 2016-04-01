@@ -3,7 +3,7 @@ call settings.bat
 
 rem git clone https://github.com/DennisOSRM/stxxl.git
 rem git clone https://github.com/stxxl/stxxl.git
-git clone https://github.com/thk1/stxxl.git
+git clone --depth 10 https://github.com/thk1/stxxl.git
 rem git clone https://github.com/alex85k/stxxl.git
 
 cd stxxl
