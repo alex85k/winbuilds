@@ -5,7 +5,7 @@ call fetch.bat http://files.linux-addicted.net/qtproject/official_releases/qt/4.
 cd qt-everywhere-opensource-src-4.8.7
 
 
-configure -debug-and-release -shared  -prefix %PREFIX1%
+configure -debug-and-release -shared -no-qt3support -prefix %PREFIX1%
 %ER%
 
 nmake
