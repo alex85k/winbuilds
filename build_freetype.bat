@@ -13,5 +13,7 @@ cmake .. %GENERATOR% -DCMAKE_BUILD_TYPE=%VARIANT% -DCMAKE_INSTALL_PREFIX=%PREFIX
 %MSBUILDINSTALL%
 %ER%
 
+copy /y %PREFIX%\lib\freetyped.lib %PREFIX%\lib\freetype.lib
+
 cd ..\..
                                   
