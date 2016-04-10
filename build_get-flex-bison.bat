@@ -8,6 +8,8 @@ echo Moving binaries to %PREFIX%\bin
 move win_flex.exe %PREFIX%\bin
 move win_bison.exe %PREFIX%\bin
 move data %PREFIX%\bin
+copy %PREFIX%\bin\win_flex.exe %PREFIX%\bin\flex.exe
+copy %PREFIX%\bin\win_bison.exe %PREFIX%\bin\bison.exe
 
 
 cd ..
