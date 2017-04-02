@@ -1,5 +1,5 @@
 set "PATH2=%PATH%"
-set "PATH=%PATH2%;C:\Program Files\Git\usr\bin"
+set "PATH=%PATH2%;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin"
 set D=%1
 
 
