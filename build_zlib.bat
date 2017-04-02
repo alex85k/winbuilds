@@ -1,9 +1,9 @@
 setlocal
 call settings.bat
 
-call fetch.bat http://zlib.net/zlib-1.2.8.tar.gz zlib-1.2.8
+call fetch.bat http://zlib.net/zlib-1.2.11.tar.gz zlib-1.2.11
 
-cd zlib-1.2.8
+cd zlib-1.2.11
 
 if "%COMPILER%" == "MINGW" (
   SET "PATH=%MSYSDIR%;%PATH%"
