@@ -1,8 +1,9 @@
 setlocal
 call settings.bat
 
-git clone https://github.com/coapp-packages/expat.git
-cd expat
+git clone --depth 1  https://github.com/libexpat/libexpat.git
+cd libexpat/expat
+rem -b R_2_2_0
 
 if "%COMPILER%" == "MINGW" (
   SET "PATH=%MSYSDIR%;%PATH%"
@@ -11,11 +12,11 @@ if "%COMPILER%" == "MINGW" (
   bash -c "make clean install"
   %ER%
 ) else (
-  "%SEDC%" -i lib/expat_external.h -e "s@defined(XML_STATIC)@1@"
+ rem  "%SEDC%" -i lib/expat_external.h -e "s@defined(XML_STATIC)@1@"
   %CMAKE% -DBUILD_shared=Off
   %ER%
   %MAKEC% install
   %ER%
 )
 
-cd ..
+cd ../..
