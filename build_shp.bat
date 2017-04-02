@@ -1,9 +1,9 @@
 setlocal
 call settings.bat
 
-call fetch.bat http://download.osgeo.org/shapelib/shapelib-1.3.0.zip shapelib-1.3.0
+call fetch.bat http://download.osgeo.org/shapelib/shapelib-1.4.0.zip shapelib-1.4.0
 
-cd shapelib-1.3.0
+cd shapelib-1.4.0
 if "%compiler%" == "MINGW" (
   SET "PATH=%PATH%;%MSYSDIR%"
   SET CC=gcc
