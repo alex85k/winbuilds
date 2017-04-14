@@ -3,7 +3,7 @@ call settings.bat
 
 set PYDIR=C:\Python27
 
-git clone --depth 1 -b tags/2.0.0 https://github.com/OSGeo/gdal.git gdal2
+git clone --depth 1 -b tags/2.1.3 https://github.com/OSGeo/gdal.git gdal2
 cd gdal2\gdal
 
 if "%1"=="clean" (git clean -f -x)
@@ -31,8 +31,8 @@ if "%COMPILER:32=%"=="%COMPILER%" (
 )
 
 
-echo "Using latest cpl_config.h.vc file to support newer compilers"
-git checkout origin/HEAD port/cpl_config.h.vc
+rem echo "Using latest cpl_config.h.vc file to support newer compilers"
+rem  git checkout origin/HEAD port/cpl_config.h.vc
 
 rem "%SEDC%" -i nmake.opt -e "s@DLLBUILD=1@DLLBUILD=0@"
 
@@ -47,16 +47,18 @@ rem "%SEDC%" -i nmake.opt -e "s@DLLBUILD=1@DLLBUILD=0@"
 "%SEDC%" -i nmake.opt -e "s@#FREEXL_LIBS =.*@FREEXL_LIBS = $(PREFIX)\\\\lib\\\\freexl.lib@"
 
 "%SEDC%" -i nmake.opt -e "s@#LIBICONV_INCLUDE =.*@LIBICONV_INCLUDE = -I$(PREFIX)\\\\include@"
-"%SEDC%" -i nmake.opt -e "s@#LIBICONV_LIBRARY =.*@LIBICONV_LIBRARY = $(PREFIX)\\\\lib\\\\iconv.lib@"
-"%SEDC%" -i nmake.opt -e "s@#LIBICONV_CFLAGS =.*@LIBICONV_CFLAGS = -DICONV_CONST=const@"
+"%SEDC%" -i nmake.opt -e "s@#LIBICONV_LIBRARY =.*@LIBICONV_LIBRARY = $(PREFIX)\\\\lib\\\\iconv.lib $(PREFIX)\\\\lib\\\\libcharset.lib@"
+"%SEDC%" -i nmake.opt -e "s@#LIBICONV_CFLAGS =.*@LIBICONV_CFLAGS = -DICONV_CONST -DWIN32@"
 
 
 "%SEDC%" -i nmake.opt -e "s@#PROJ_FLAGS =.*@PROJ_FLAGS = -DPROJ_STATIC@"
 "%SEDC%" -i nmake.opt -e "s@#PROJ_INCLUDE =.*@PROJ_INCLUDE = -I$(PREFIX)\\\\include@"
 "%SEDC%" -i nmake.opt -e "s@#PROJ_LIBRARY =.*@PROJ_LIBRARY = $(PREFIX)\\\\lib\\\\proj.lib@"
 
+"%SEDC%" -i nmake.opt -e "s@= odbc32.lib@= legacy_stdio_definitions.lib odbc32.lib@"
 
-"%SEDC%" -i nmake.opt -e "s@ODBC_SUPPORTED = 1@#ODBC_SUPPORTED = 1@"
+
+rem "%SEDC%" -i nmake.opt -e "s@ODBC_SUPPORTED = 1@#ODBC_SUPPORTED = 1@"
 
 rem "%SEDC%" -i nmake.opt -e s@#SQLITE_LIB=.*@SQLITE_LIB=\$\(PREFIX\)\\\\lib\\\\sqlite3.lib@"
 rem "%SEDC%" -i nmake.opt -e "s@#SQLITE_INC=.*@SQLITE_INC=-I\$\(PREFIX\)\\\\include@"
