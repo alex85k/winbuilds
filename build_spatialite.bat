@@ -1,9 +1,9 @@
 setlocal
 call settings.bat
 
-call fetch.bat http://www.gaia-gis.it/gaia-sins/libspatialite-sources/libspatialite-4.3.0.tar.gz libspatialite-4.3.0
+call fetch.bat http://www.gaia-gis.it/gaia-sins/libspatialite-sources/libspatialite-4.3.0a.tar.gz libspatialite-4.3.0a
 
-cd libspatialite-4.3.0
+cd libspatialite-4.3.0a
 
 SET "PREFIX1=%PREFIX:\=/%"
 
@@ -32,7 +32,7 @@ if "%Variant%" == "Debug" (
 "%SEDC%" -i makefile.vc -e "s@proj_i.lib@proj.lib@g"
 "%SEDC%" -i makefile.vc -e "s@freexl_i.lib@freexl.lib@g"
 "%SEDC%" -i makefile.vc -e "s@sqlite3_i.lib@sqlite3.lib@g"
-
+"%SEDC%" -i makefile.vc -e "s@iconv.lib@iconv.lib $(PREFIX)\\\\lib\\\\libcharset.lib@g"
 "%SEDC%" -i config-msvc.h -e "s@HAVE_UNISTD_H@HAVE_NOT_UNISTD_H@g"
 "%SEDC%" -i "src/gaiageo/gg_extras.c" -e "s@rint (double@oldrint (double@"
 
