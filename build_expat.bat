@@ -12,11 +12,12 @@ if "%COMPILER%" == "MINGW" (
   bash -c "make clean install"
   %ER%
 ) else (
- rem  "%SEDC%" -i lib/expat_external.h -e "s@defined(XML_STATIC)@1@"
+  "%SEDC%" -i lib/expat_external.h -e "s@defined(XML_STATIC)@1@"
   %CMAKE% -DBUILD_shared=Off
   %ER%
   %MAKEC% install
   %ER%
 )
 
+copy /y %PREFIX%\lib\expatd.lib %PREFIX%\lib\expat.lib
 cd ../..
