@@ -26,7 +26,7 @@ if "%Variant%" == "Debug" (
 
 rem MAKE THE MOST LIBS STATICALLY LINKED TO AVOID DLL CONFLICTS
 "%SEDC%" -i makefile.vc -e "s@libexpat.lib@expat.lib@g"
-"%SEDC%" -i makefile.vc -e "s@spatialite_i.lib@spatialite.lib $(PREFIX)\\\\lib\\\\freexl.lib $(PREFIX)\\\\lib\\\\libxml2.lib $(PREFIX)\\\\lib\\\\zlib.lib $(PREFIX)\\\\lib\\\geos_c.lib@g"
+"%SEDC%" -i makefile.vc -e "s@spatialite_i.lib@spatialite.lib $(PREFIX)\\\\lib\\\\libcharset.lib $(PREFIX)\\\\lib\\\\freexl.lib $(PREFIX)\\\\lib\\\\libxml2.lib $(PREFIX)\\\\lib\\\\zlib.lib $(PREFIX)\\\\lib\\\geos_c.lib@g"
 "%SEDC%" -i makefile.vc -e "s@proj_i.lib@proj.lib@g"
 "%SEDC%" -i makefile.vc -e "s@readosm_i.lib@readosm.lib@g"
 "%SEDC%" -i makefile.vc -e "s@sqlite3_i.lib@sqlite3.lib@g"
