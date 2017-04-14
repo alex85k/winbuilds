@@ -55,6 +55,7 @@ if "%COMPILER%"=="MINGW" (
   SET "MSBUILDINSTALL=msbuild /p:Configuration=%Variant% /p:BuildInParallel=true /clp:Verbosity=normal /nologo  /flp1:logfile=build_errors.txt;errorsonly /flp2:logfile=build_warnings.txt;warningsonly INSTALL.vcxproj"
   SET "MSBUILD=msbuild /p:Configuration=%Variant% /p:BuildInParallel=true /clp:Verbosity=normal /nologo  /flp1:logfile=build_errors.txt;errorsonly /flp2:logfile=build_warnings.txt;warningsonly"
   SET "SEDC=C:\Program Files\Git\usr\bin\sed"
+  SET "CMAKE_BOOST_FLAGS=-DBOOST_ROOT=%BOOST_ROOT% -DBoost_USE_STATIC_LIBS=ON  -DBoost_ADDITIONAL_VERSIONS=1.58;1.59;1.60;1.61;1.62;1.63;1.64"
 )
 set "CMAKEVS=cmake %GENERATOR% -DCMAKE_BUILD_TYPE=%VARIANT% -DCMAKE_INSTALL_PREFIX=%PREFIX%"
 
