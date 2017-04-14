@@ -15,6 +15,7 @@ You just need to
 See also more advanced collections:
  - Mapbox windows-builds (Mapnik and OSM-related packages, professionaly supported batch scripts): https://github.com/mapbox/windows-builds
  - MSYS2 (MinGW & Cygwin fork and Arch pacman for windows): https://msys2.github.io with its huge repository of packages https://github.com/Alexpux/MINGW-packages
+ - vcpkg (CMake-based port collection): https://github.com/Microsoft/vcpkg
  - Osgeo4W (GIS targeted repository, >150 packages) https://trac.osgeo.org/osgeo4w/
  - Win-builds with yypkg package manager: http://win-builds.org/doku.php
  - Cygwin (slower but biggest set of packages) https://cygwin.com
