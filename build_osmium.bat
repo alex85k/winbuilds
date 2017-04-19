@@ -21,7 +21,9 @@ if "%COMPILER%" == "MINGW" (
    mingw32-make
    %ER%
 ) else (
-   cmake .. %GENERATOR% -DCMAKE_BUILD_TYPE=%VARIANT% -DCMAKE_INSTALL_PREFIX=%PREFIX% %CMAKE_BOOST_FLAGS% -DBUILD_TESTING=%TESTS% -DBUILD_HEADERS=%BUILD_HEADERS% -DBUILD_BENCHMARKS=%BUILD_BENCHMARKS% -DBUILD_DATA_TESTS=%DATATEST%
+   cmake .. %GENERATOR% -DCMAKE_BUILD_TYPE=%VARIANT% -DCMAKE_INSTALL_PREFIX=%PREFIX% %CMAKE_BOOST_FLAGS% ^
+   -DBUILD_TESTING=%TESTS% -DBUILD_HEADERS=%BUILD_HEADERS% -DBUILD_BENCHMARKS=%BUILD_BENCHMARKS% -DBUILD_DATA_TESTS=%DATATEST% ^
+   -DINSTALL_GDALCPP=ON -DINSTALL_PROTOZERO=ON -DINSTALL_UTFCPP=ON)
    %ER%
    %MSBUILD% libosmium.sln
    %ER%
@@ -38,12 +40,5 @@ if "%COMPILER%" == "MINGW" (
    %ER%
 )
 
-mkdir %PREFIX%\include\protozero
-xcopy /i /y /e ..\include\protozero %PREFIX%\include\protozero
-mkdir %PREFIX%\include\utf8
-xcopy /i /y /e ..\include\utf8 %PREFIX%\include\utf8
-
-copy /y ..\include\utf8.h %PREFIX%\include
-copy /y ..\include\gdalcpp.hpp %PREFIX%\include
 cd ..\..
 
