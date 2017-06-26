@@ -1,6 +1,6 @@
 if "%COMPILER%"=="" SET COMPILER=MSVC2015
 if "%PREFIX%"=="" SET PREFIX=d:\libs2015r
-if "%BOOST_ROOT%"=="" SET BOOST_ROOT=d:\boost
+if "%BOOST_ROOT%"=="" SET BOOST_ROOT=d:/boost
 if "%VARIANT%"=="" SET Variant=Release
 
 set "ER=if ERRORLEVEL 1 exit /b 1"
