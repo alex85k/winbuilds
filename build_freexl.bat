@@ -1,8 +1,8 @@
 setlocal
 call settings.bat
 
-call fetch.bat http://www.gaia-gis.it/gaia-sins/freexl-1.0.2.zip freexl-1.0.2
-cd freexl-1.0.2
+call fetch.bat http://www.gaia-gis.it/gaia-sins/freexl-1.0.4.zip freexl-1.0.4
+cd freexl-1.0.4
 
 if "%COMPILER%" == "MINGW" (
   SET "PATH=%PATH%;%MSYSDIR%"
