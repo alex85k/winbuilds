@@ -1,9 +1,9 @@
-setlocal
+	setlocal
 call settings.bat
 
 set PYDIR=C:\Python27
 
-git clone --depth 1 -b tags/2.1.3 https://github.com/OSGeo/gdal.git gdal2
+git clone --depth 1 -b tags/2.2.1 https://github.com/OSGeo/gdal.git gdal2
 cd gdal2\gdal
 
 if "%1"=="clean" (git clean -f -x)
@@ -48,7 +48,7 @@ rem "%SEDC%" -i nmake.opt -e "s@DLLBUILD=1@DLLBUILD=0@"
 
 "%SEDC%" -i nmake.opt -e "s@#LIBICONV_INCLUDE =.*@LIBICONV_INCLUDE = -I$(PREFIX)\\\\include@"
 "%SEDC%" -i nmake.opt -e "s@#LIBICONV_LIBRARY =.*@LIBICONV_LIBRARY = $(PREFIX)\\\\lib\\\\iconv.lib $(PREFIX)\\\\lib\\\\libcharset.lib@"
-"%SEDC%" -i nmake.opt -e "s@#LIBICONV_CFLAGS =.*@LIBICONV_CFLAGS = -DICONV_CONST -DWIN32@"
+"%SEDC%" -i nmake.opt -e "s@#LIBICONV_CFLAGS =.*@LIBICONV_CFLAGS = -DICONV_CONST -DWIN32 -DICONV_CPP_CONST=const@"
 
 
 "%SEDC%" -i nmake.opt -e "s@#PROJ_FLAGS =.*@PROJ_FLAGS = -DPROJ_STATIC@"
