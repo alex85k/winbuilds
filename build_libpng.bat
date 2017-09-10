@@ -1,9 +1,9 @@
 setlocal
 call settings.bat
 
-call fetch.bat http://prdownloads.sourceforge.net/libpng/lpng1629.zip lpng1629
+call fetch.bat http://prdownloads.sourceforge.net/libpng/lpng1632.zip lpng1632
 
-cd lpng1629
+cd lpng1632
 %CMAKE%
 %ER%
 %MAKEC% install
