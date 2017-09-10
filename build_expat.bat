@@ -3,7 +3,7 @@ call settings.bat
 
 git clone --depth 1  https://github.com/libexpat/libexpat.git
 cd libexpat/expat
-rem -b R_2_2_0
+rem -b R_2_2_4 
 
 if "%COMPILER%" == "MINGW" (
   SET "PATH=%MSYSDIR%;%PATH%"
@@ -13,7 +13,7 @@ if "%COMPILER%" == "MINGW" (
   %ER%
 ) else (
   "%SEDC%" -i lib/expat_external.h -e "s@defined(XML_STATIC)@1@"
-  %CMAKE% -DBUILD_shared=Off
+  %CMAKE% -DBUILD_shared=NO -DBUILD_tests=NO
   %ER%
   %MAKEC% install
   %ER%
